@@ -26,6 +26,7 @@ const Product = db.define('product', {
   category: {
     type: Sequelize.ENUM(['food/drink', 'style', 'home']),
     validate: {
+      allowNull: false,
       defaultValue: 'home'
     }
   }
