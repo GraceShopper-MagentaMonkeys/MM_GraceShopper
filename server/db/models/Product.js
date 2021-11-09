@@ -18,17 +18,13 @@ const Product = db.define('product', {
   },
   quantity: {
     type: Sequelize.INTEGER,
-    validate: {
+      allowNull: false,
       defaultValue: 1,
-      allowNull: false
-    }
   },
   category: {
     type: Sequelize.ENUM(['food/drink', 'style', 'home']),
-    validate: {
+    defaultValue: 'home',
       allowNull: false,
-      defaultValue: 'home'
-    }
   },
   imageUrl: {
     type: Sequelize.STRING,

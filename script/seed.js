@@ -3,6 +3,8 @@
 
 const {db, models: {User, Product} } = require('../server/db')
 
+const products = require('./products')
+
 /**
  * seed - this function clears the database, updates tables to
  *      match the models, and populates the database.
@@ -22,7 +24,12 @@ async function seed() {
     User.create({ username: 'murphy', password: '123' }),
   ]);
 
+  await Promise.all(products.map(product => {
+    return Product.create(product, {include: [User]})
+  }))
+
   console.log(`seeded ${users.length} users`);
+  console.log(`seeded ${products.length} products`)
   console.log(`seeded successfully`);
   return {
     users: {
