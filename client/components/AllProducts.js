@@ -1,44 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { fetchProducts } from '../store/all-products';
 
 class AllProducts extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      products: [
-        {
-          img: 'https://wisdmlabs.com/site/wp-content/uploads/2016/04/inventory.png',
-          name: 'Gold Cactus',
-          price: 6012,
-          description: 'this is a perfectly golden cactus. Please buy it',
-        },
-        {
-          img: 'https://wisdmlabs.com/site/wp-content/uploads/2016/04/inventory.png',
-          name: 'Whiskey Shaving Cream for Women',
-          price: 30,
-          description: 'Idk buy it if you want?',
-        },
-        {
-          img: 'https://wisdmlabs.com/site/wp-content/uploads/2016/04/inventory.png',
-          name: 'Rocky Mountain fertility Medicine',
-          price: 500,
-          description: 'If ya know ya know',
-        },
-      ],
-    };
+  componentDidMount() {
+    this.props.fetchProducts()
   }
   render() {
+    const { products } = this.props
+    console.log(products)
     return (
       <div>
-        {this.state.products.map((product) => {
+        {products.map((product) => {
           return (
             <div
-              key={product.name}
+              id='hello'
+              key={product.id}
               onClick={() => {
                 console.log('You clicked me');
               }}
             >
-              <img src={product.img} />
+              <img src={product.imageUrl} />
               <h4>
                 {product.name} - ${product.price}
               </h4>
@@ -52,11 +34,15 @@ class AllProducts extends React.Component {
 }
 
 const mapState = (state) => {
-  return {};
+  return {
+    products: state.productsReducer
+  };
 };
 
 const mapDispatch = (dispatch) => {
-  return {};
+  return {
+    fetchProducts: () => dispatch(fetchProducts())
+  };
 };
 
 export default connect(mapState, mapDispatch)(AllProducts);
