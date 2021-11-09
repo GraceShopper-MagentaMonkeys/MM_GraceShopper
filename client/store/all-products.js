@@ -35,6 +35,9 @@ export const fetchProducts = () => {
   }
 }
 
+/**
+ * REDUCER
+ */
 
 export default function productsReducer(state = [], action) {
   switch (action.type) {
