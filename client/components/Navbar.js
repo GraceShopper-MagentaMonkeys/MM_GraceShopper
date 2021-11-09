@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
 import AllProducts from './AllProducts';
+import SingleProduct from './SingleProduct';
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
