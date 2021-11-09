@@ -29,6 +29,10 @@ const Product = db.define('product', {
       allowNull: false,
       defaultValue: 'home'
     }
+  },
+  imageUrl: {
+    type: Sequelize.STRING,
+    allowNull: false,
   }
 })
 
