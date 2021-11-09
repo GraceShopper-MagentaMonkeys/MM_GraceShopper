@@ -24,7 +24,7 @@ export const fetchProducts = () => {
 
   return async (dispatch) => {
     try {
-      const response = await axios.get('/api/allrobots');
+      const response = await axios.get('/api/allproducts');
       const products = response.data;
 
       dispatch(setProducts(products));
