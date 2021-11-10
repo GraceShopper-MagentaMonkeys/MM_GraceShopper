@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchProducts } from '../store/all-products';
 
 class AllProducts extends React.Component {
@@ -8,24 +9,19 @@ class AllProducts extends React.Component {
   }
   render() {
     const { products } = this.props
-    console.log(products)
     return (
       <div>
         {products.map((product) => {
           return (
-            <div
-              id='hello'
-              key={product.id}
-              onClick={() => {
-                console.log('You clicked me');
-              }}
-            >
+          <Link to={`/allproducts/${product.id}`} key={product.id}>
+            <div id='hello'>
               <img src={product.imageUrl} />
               <h4>
                 {product.name} - ${product.price}
               </h4>
               <p>{product.description}</p>
             </div>
+          </Link>
           );
         })}
       </div>
