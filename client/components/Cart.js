@@ -30,9 +30,25 @@ class Cart extends React.Component {
     }
     
     render(){
+        
+        const prices = this.state.selectedProducts.map( product => {
+            return product.price
+        })
+        
+        const total =prices.reduce((acc, ele) => {
+                return acc + ele
+            }, 0)
+        
         return (
             <div>
-                <h1>Placeholder text is placeholder.</h1>
+                {console.log('prices', prices, 'total', total)}
+                <div>
+                    <img src='https://wisdmlabs.com/site/wp-content/uploads/2016/04/inventory.png'/>
+                    <h3>{this.state.selectedProducts[1].name} ${this.state.selectedProducts[1].price}</h3>
+                </div>
+                <div>
+                    <h3>Total: {total}</h3>
+                </div>
             </div>
         )
     }
