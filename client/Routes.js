@@ -25,7 +25,7 @@ class Routes extends Component {
           <Switch>
             <Route path="/home" component={Home} />
             <Redirect to="/home" />
-            <Route exact path="/allproducts" component={AllProducts} />
+            <Route exact path="/home/allproducts" component={AllProducts} />
             <Route path="/allproducts/:id" component={SingleProduct} />
           </Switch>
         ) : (
