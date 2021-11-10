@@ -7,6 +7,7 @@ class AllProducts extends React.Component {
   componentDidMount() {
     this.props.fetchProducts();
   }
+  
   render() {
     const { products } = this.props
     return (
