@@ -9,6 +9,10 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
     <h1>Magenta Monkeys</h1>
     <nav>
+      {/* render something slightly different if isAdmin === true */}
+      isAdmin {
+        //
+      }
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
@@ -29,7 +33,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <Link to="/cart/:userId">Cart</Link>
         </div>
       )}
-      
+
     </nav>
     <hr />
   </div>

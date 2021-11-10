@@ -3,33 +3,36 @@
 const products = [
   ///////////// STYlE
   {
-    name: 'Bath robe',
+    name: 'Shearling Bath Robe',
     price: 9000,
-    description: 'Parakeet green, genuine shearling bath robe made it in Italy',
+    description: 'Parakeet green, genuine shearling bathrobe. Made in Italy',
     quantity: 10,
     imageUrl: 'https://img.ssensemedia.com/images/b_white,g_center,f_auto,q_auto:best/212798M219236_1/bottega-veneta-green-teddy-shearling-robe.jpg',
     category: 'style',
+    users: {
+      include: [{username: 'cody'}]
+    }
   },  {
-    name: 'Lambskin',
+    name: 'Lambskin Leather Trouser',
     price: 2500,
-    description:  'Black leather pants with wide leg, made in Italy',
+    description:  'Black leather pants with wide leg and interior satin lining, made in Italy',
     quantity: 5,
     imageUrl: 'https://img.ssensemedia.com/images/b_white,g_center,f_auto,q_auto:best/212379M189002_1/marni-black-lambskin-pants.jpg',
     category: 'style'
   },
 
   {
-    name: 'Black knitted sweater',
+    name: 'Black Hand-Knitted Cardigan',
     price: 4000,
-    description: 'Black sweater with detail, made in Japan',
+    description: 'Black high-quality lambswool sweater with hand-sewn applique detail, made in Japan',
     quantity: 10,
     imageUrl: 'https://img.ssensemedia.com/images/b_white,g_center,f_auto,q_auto:best/212968M200001_1/mastermind-world-black-cashmere-graphic-cardigan.jpg',
     category: 'style'
   },
   {
-    name: 'Black Crocodile boots',
+    name: 'Black Chelsea Boots in Crocodile Leather',
     price: 3000,
-    description: 'Black Crocodile leather boots, made in Australia',
+    description: 'Black crocodile leather boots, made in Australia',
     imageUrl: 'https://img.ssensemedia.com/images/b_white,g_center,f_auto,q_auto:best/212076M228001_1/tom-ford-black-croc-chelsea-boots.jpg',
     quantity: 10,
     category: 'style'
@@ -37,7 +40,7 @@ const products = [
   {
     name: 'Beige Cashmere Socks',
     price: 700,
-    description: 'Beige Cashmere Socks, made in Italy',
+    description: 'Beige Cashmere Socks with tonal rib-knit details. Made in Italy',
     imageUrl: 'https://img.ssensemedia.com/images/b_white,g_center,f_auto,q_auto:best/212887M220002_1/brunello-cucinelli-beige-cashmere-rib-knit-socks.jpg',
     quantity: 15,
     category: 'style'
@@ -46,7 +49,7 @@ const products = [
   {
     name:'Off-White Leather & Amber Scented Candle',
     price: 300,
-    description: 'Hand-poured beeswax-blend candle in lacquered off-white glaze. Fragrance notes of leaf, leather, and amber. Handcrafter in Japan',
+    description: 'Hand-poured beeswax-blend candle in lacquered off-white glaze. Fragrance notes of leaf, leather, and amber. Handcrafted in Japan',
     imageUrl: 'https://img.ssensemedia.com/images/b_white,c_lpad,g_center,h_1412,w_940/c_scale,h_960/f_auto,dpr_2.0/212881M618002_1/marloe-marloe-off-white-leather-and-amber-scented-candle-450g.jpg',
     quantity:15,
     category: 'home',
