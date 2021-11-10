@@ -1,5 +1,7 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Playfair Display', serif;
+  background-color: rgb(109, 105, 105);
+  color: white;
 }
 
 a {
@@ -13,6 +15,11 @@ label {
 nav a {
   display: inline-block;
   margin: 1em;
+  color: white;
+  font-family: 'Playfair Display', serif;
+}
+nav a:hover {
+  text-decoration: underline;
 }
 
 form div {
@@ -21,6 +28,100 @@ form div {
 }
 
 #hello img {
-  height:fit-content;
-  width:fit-content
+  height: fit-content;
+  width: fit-content;
+}
+
+.navBarHeader {
+  background-color: black;
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: white;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  font-style: italic;
+}
+
+.landingMainBg {
+  display: flex;
+}
+
+.homeImages {
+  width: 50%;
+  height: auto;
+  justify-content: space-around;
+}
+.homeButtonDiv {
+  display: grid;
+}
+.homeButton {
+  font-family: 'Playfair Display', serif;
+  border: none;
+  font-weight: 600;
+  margin: auto;
+  background-color: white;
+  color: black;
+  width: 100px;
+  height: 30px;
+  transition: 300ms;
+}
+.homeButton:hover {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+}
+#hello {
+  display: flex;
+  justify-content: center;
+  width: 75%;
+}
+.imageHolder {
+  /* display: flex; */
+  height: 500px;
+  width: 200px;
+}
+.productImage {
+  align-items: flex-start;
+  max-width: 80%;
+  max-height: 80%;
+  display: block;
+  margin: 0 auto;
+}
+.productPriceAndDescription {
+  align-items: center;
+}
+.loginForm {
+  display: flex;
+  width: 200px;
+}
+.innerForm {
+  margin: auto;
+}
+.usernameField {
+  display: block;
+  width: 200px;
+  height: 30px;
+  font-size: 15px;
+  border: 1px solid black;
+}
+.passwordField {
+  display: block;
+  width: 200px;
+  height: 30px;
+  font-size: 15px;
+  border: 1px solid black;
+}
+.loginButton {
+  display: block;
+  width: 200px;
+  height: 30px;
+  font-size: 15px;
+  background-color: black;
+  color: white;
+  font-family: 'Playfair Display', serif;
 }

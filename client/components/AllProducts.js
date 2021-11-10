@@ -1,31 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchProducts } from '../store/all-products';
 
 class AllProducts extends React.Component {
   componentDidMount() {
-    this.props.fetchProducts()
+    this.props.fetchProducts();
   }
+  
   render() {
     const { products } = this.props
-    console.log(products)
     return (
       <div>
         {products.map((product) => {
           return (
-            <div
-              id='hello'
-              key={product.id}
-              onClick={() => {
-                console.log('You clicked me');
-              }}
-            >
-              <img src={product.imageUrl} />
+          <Link to={`/allproducts/${product.id}`} key={product.id}>
+            <div id='hello'>
+              <div className="imageHolder">
+              <img src={product.imageUrl} className="productImage"/>
+              </div>
+              <div className="productPriceAndDescription">
               <h4>
                 {product.name} - ${product.price}
               </h4>
-              <p>{product.description}</p>
+              <p>Item description: {product.description}</p>
+              </div>
             </div>
+          </Link>
           );
         })}
       </div>
@@ -35,13 +36,13 @@ class AllProducts extends React.Component {
 
 const mapState = (state) => {
   return {
-    products: state.productsReducer
+    products: state.productsReducer,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchProducts: () => dispatch(fetchProducts())
+    fetchProducts: () => dispatch(fetchProducts()),
   };
 };
 

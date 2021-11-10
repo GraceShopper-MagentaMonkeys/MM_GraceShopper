@@ -30,9 +30,31 @@ class Cart extends React.Component {
     }
     
     render(){
+        
+        const prices = this.state.selectedProducts.map( product => {
+            return product.price
+        })
+        
+        const total =prices.reduce((acc, ele) => {
+                return acc + ele
+            }, 0)
+        
+        //function to get quantity? magic method? 
+        
         return (
             <div>
-                <h1>Placeholder text is placeholder.</h1>
+                    <h1>Your Items</h1>
+                    {this.state.selectedProducts.map( product => (
+                        <div key={product.name}>
+                            <img src={product.img}/>
+                            <h4>{product.name} ${product.price}</h4>
+                            <h4>Quantity:{1}</h4>
+                            <button>+</button><button>Remove</button>
+                        </div>
+                    ))}
+                <div>
+                    <h2>Subtotal: ${total}</h2>
+                </div>
             </div>
         )
     }
@@ -40,7 +62,6 @@ class Cart extends React.Component {
 
 const mapState = state => {
     return {
-        // how is our store working? are we combining multiple reducers? 
         // selectedProducts: state from store
     }
 }
