@@ -41,13 +41,15 @@ class Cart extends React.Component {
         
         return (
             <div>
-                {console.log('prices', prices, 'total', total)}
+                    <h1>Your Items</h1>
+                    {this.state.selectedProducts.map( product => (
+                        <div key={product.name}>
+                            <img src={product.img}/>
+                            <h4>{product.name} ${product.price}</h4>
+                        </div>
+                    ))}
                 <div>
-                    <img src='https://wisdmlabs.com/site/wp-content/uploads/2016/04/inventory.png'/>
-                    <h3>{this.state.selectedProducts[1].name} ${this.state.selectedProducts[1].price}</h3>
-                </div>
-                <div>
-                    <h3>Total: {total}</h3>
+                    <h2>Subtotal: ${total}</h2>
                 </div>
             </div>
         )
@@ -56,7 +58,6 @@ class Cart extends React.Component {
 
 const mapState = state => {
     return {
-        // how is our store working? are we combining multiple reducers? 
         // selectedProducts: state from store
     }
 }
