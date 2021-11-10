@@ -6,7 +6,7 @@ import AllProducts from './AllProducts';
 import SingleProduct from './SingleProduct';
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
+  <div class="navBarHeader">
     <h1>Magenta Monkeys</h1>
     <nav>
       {isLoggedIn ? (
@@ -29,7 +29,6 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <Link to="/cart/:userId">Cart</Link>
         </div>
       )}
-      
     </nav>
     <hr />
   </div>

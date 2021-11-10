@@ -5,7 +5,7 @@ import { fetchProducts } from '../store/all-products';
 
 class AllProducts extends React.Component {
   componentDidMount() {
-    this.props.fetchProducts()
+    this.props.fetchProducts();
   }
   render() {
     const { products } = this.props
@@ -15,11 +15,15 @@ class AllProducts extends React.Component {
           return (
           <Link to={`/allproducts/${product.id}`} key={product.id}>
             <div id='hello'>
-              <img src={product.imageUrl} />
+              <div className="imageHolder">
+              <img src={product.imageUrl} className="productImage"/>
+              </div>
+              <div className="productPriceAndDescription">
               <h4>
                 {product.name} - ${product.price}
               </h4>
-              <p>{product.description}</p>
+              <p>Item description: {product.description}</p>
+              </div>
             </div>
           </Link>
           );
@@ -31,13 +35,13 @@ class AllProducts extends React.Component {
 
 const mapState = (state) => {
   return {
-    products: state.productsReducer
+    products: state.productsReducer,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchProducts: () => dispatch(fetchProducts())
+    fetchProducts: () => dispatch(fetchProducts()),
   };
 };
 
