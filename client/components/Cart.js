@@ -39,6 +39,8 @@ class Cart extends React.Component {
                 return acc + ele
             }, 0)
         
+        //function to get quantity? magic method? 
+        
         return (
             <div>
                     <h1>Your Items</h1>
@@ -46,6 +48,8 @@ class Cart extends React.Component {
                         <div key={product.name}>
                             <img src={product.img}/>
                             <h4>{product.name} ${product.price}</h4>
+                            <h4>Quantity:{1}</h4>
+                            <button>+</button><button>Remove</button>
                         </div>
                     ))}
                 <div>
