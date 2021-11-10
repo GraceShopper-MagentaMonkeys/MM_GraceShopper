@@ -5,6 +5,7 @@ import { logout } from '../store';
 import AllProducts from './AllProducts';
 import SingleProduct from './SingleProduct';
 
+
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div className="navBarHeader">
     <h1>Magenta Monkeys</h1>
