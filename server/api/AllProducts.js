@@ -1,4 +1,5 @@
 const router = require('express').Router()
+// const { unstable_renderSubtreeIntoContainer } = require('react-dom');
 const { models: { Product }} = require('../db')
 module.exports = router
 
@@ -24,5 +25,14 @@ router.get('/:productId', async (req, res, next) => {
 
   } catch (e) {
     next(e);
+  }
+})
+
+router.put('/:productId/edit', async (req, res, next) => {
+  try {
+    const singleProduct = await Product.findByPk(req.params.productId);
+    res.send( await singleProduct.update(req.body))
+  } catch(error) {
+    next(error)
   }
 })
