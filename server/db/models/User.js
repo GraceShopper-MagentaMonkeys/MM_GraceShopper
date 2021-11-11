@@ -33,6 +33,13 @@ const User = db.define('user', {
       notEmpty: true,
       isEmail: true,
     }
+  },
+  imageUrl: {
+    type: Sequelize.STRING,
+    defaultValue: 'https://image.pngaaa.com/93/4052093-middle.png',
+    validate: {
+      isUrl: true
+    }
   }
 })
 

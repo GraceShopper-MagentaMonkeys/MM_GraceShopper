@@ -34,6 +34,7 @@ const AuthForm = (props) => {
           />
         </div>
         {name === 'signup' ? (
+        <span>
           <div>
           <label htmlFor="email">
             <small></small>
@@ -45,6 +46,18 @@ const AuthForm = (props) => {
             type="email"
           />
         </div>
+          <div>
+          <label htmlFor="imageUrl">
+            <small>Insert Image:</small>
+          </label>
+          <input
+            className="passwordField"
+            placeholder="Insert image url"
+            name="imageUrl"
+            type="imageUrl"
+          />
+          </div>
+        </span>
         ) : ''}
         <div>
           <button className="loginButton" type="submit">
@@ -88,7 +101,8 @@ const mapDispatch = (dispatch) => {
       const username = evt.target.username.value;
       const password = evt.target.password.value;
       const email = evt.target.email.value;
-      dispatch(authenticate(username, password, formName, email));
+      const imageUrl = evt.target.imageUrl.value;
+      dispatch(authenticate(username, password, formName, email, imageUrl));
     },
   };
 };
