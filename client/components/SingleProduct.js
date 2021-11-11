@@ -11,7 +11,6 @@ class SingleProduct extends React.Component {
   render() {
 
     const { product, isAdmin } = this.props;
-    console.log(isAdmin)
     return (
       <div>
           {product.id ?
@@ -34,7 +33,7 @@ class SingleProduct extends React.Component {
             </div>
                 { isAdmin ? (
 
-                   <Link to ={`/allproducts/${product.id}/edit`} key={product.id}>Edit Product</Link>
+                   <Link to ={`/allproducts/${product.id}/edit`} >Edit Product</Link>
                   )
                  :
                  ('')
