@@ -11,13 +11,28 @@ const User = db.define('user', {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false,
+    validate: {
+      notEmpty: true,
+    }
   },
   password: {
     type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    }
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
+  },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      isEmail: true,
+    }
   }
 })
 
@@ -38,8 +53,8 @@ User.prototype.generateToken = function() {
 /**
  * classMethods
  */
-User.authenticate = async function({ username, password }){
-    const user = await this.findOne({where: { username }})
+User.authenticate = async function({ username, password, email }){
+    const user = await this.findOne({where: { username, email }})
     if (!user || !(await user.correctPassword(password))) {
       const error = Error('Incorrect username/password');
       error.status = 401;
