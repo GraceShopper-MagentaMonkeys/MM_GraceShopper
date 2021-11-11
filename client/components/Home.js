@@ -10,6 +10,7 @@ export const Home = (props) => {
 
   return (
     <div>
+      {console.log(props)}
       <h3>Welcome, {username}</h3>
       <LandingPage />
     </div>
@@ -22,6 +23,7 @@ export const Home = (props) => {
 const mapState = (state) => {
   return {
     username: state.auth.username,
+    auth: state.auth
   };
 };
 
