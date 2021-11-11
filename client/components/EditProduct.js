@@ -45,6 +45,7 @@ class EditProduct extends React.Component {
   render() {
     const {name, price, description, quantity, imageUrl, category} = this.state
     const { handleSubmit, handleChange} = this;
+    console.log(this.props.singleProduct)
     return (
       <div className = 'edit-product-container'>
         <form id='product-update-form' onSubmit={handleSubmit}>
@@ -70,7 +71,7 @@ class EditProduct extends React.Component {
           <button type='submit'>Submit these changes!</button>
           <button
                   className="remove"
-                  onClick={() => this.props.deleteProduct(product.id)}
+                  onClick={() => this.props.deleteProduct(this.props.singleProduct.singleProductReducer.id)}
                   type="button"
                 >
                   X Delete This Product X
