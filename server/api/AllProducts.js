@@ -27,7 +27,7 @@ router.get('/:productId', async (req, res, next) => {
     next(e);
   }
 })
-
+//udpate a product for admin
 router.put('/:productId/edit', async (req, res, next) => {
   try {
     const singleProduct = await Product.findByPk(req.params.productId);
@@ -36,3 +36,13 @@ router.put('/:productId/edit', async (req, res, next) => {
     next(error)
   }
 })
+//remove a product for admin
+router.delete('/:productId/edit', async (req, res, next) => {
+  try {
+    const singleProject = await Product.findByPk(req.params.productId);
+    await singleProject.destroy();
+    res.send(singleProject);
+  } catch (error) {
+    next(error);
+  }
+});
