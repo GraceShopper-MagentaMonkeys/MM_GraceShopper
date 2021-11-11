@@ -25,7 +25,7 @@ async function seed() {
   ]);
 
   await Promise.all(products.map(product => {
-    return Product.create(product, {include: [User]})
+    return Product.create(product, [{include: User}])
   }))
 
   console.log(`seeded ${users.length} users`);

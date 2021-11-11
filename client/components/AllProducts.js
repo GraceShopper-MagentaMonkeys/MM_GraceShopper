@@ -7,7 +7,7 @@ class AllProducts extends React.Component {
   componentDidMount() {
     this.props.fetchProducts();
   }
-  
+
   render() {
     const { products } = this.props
     return (
@@ -25,6 +25,9 @@ class AllProducts extends React.Component {
               </h4>
               <p>Item description: {product.description}</p>
               </div>
+
+
+             
             </div>
           </Link>
           );
