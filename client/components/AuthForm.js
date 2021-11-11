@@ -97,12 +97,19 @@ const mapDispatch = (dispatch) => {
   return {
     handleSubmit(evt) {
       evt.preventDefault();
-      const formName = evt.target.name;
-      const username = evt.target.username.value;
-      const password = evt.target.password.value;
-      const email = evt.target.email.value;
-      const imageUrl = evt.target.imageUrl.value;
-      dispatch(authenticate(username, password, formName, email, imageUrl));
+      if (evt.target.name === 'login') {
+        const formName = evt.target.name;
+        const username = evt.target.username.value;
+        const password = evt.target.password.value;
+        dispatch(authenticate(username, password, formName))
+      } else {
+        const formName = evt.target.name;
+        const username = evt.target.username.value;
+        const password = evt.target.password.value;
+        const email = evt.target.email.value;
+        const imageUrl = evt.target.imageUrl.value;
+        dispatch(authenticate(username, password, formName, email, imageUrl));
+      }
     },
   };
 };
