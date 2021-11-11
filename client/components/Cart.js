@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getSelectedProducts } from '../store/cart'
 
 class Cart extends React.Component {
     constructor(){
@@ -25,7 +26,8 @@ class Cart extends React.Component {
                   price: 500,
                   description: 'If ya know ya know',
                 }
-            ]
+            ],
+            
         }
     }
     
@@ -62,13 +64,13 @@ class Cart extends React.Component {
 
 const mapState = state => {
     return {
-        // selectedProducts: state from store
+        userId: state.auth.id
     }
 }
 
 const mapDispatch = dispatch => {
     return {
-        // getSelectedProducts: function from redux file
+        fetchSelectedProducts: userId => getSelectedProducts(userId)
     }
 }
 

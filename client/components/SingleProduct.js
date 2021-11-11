@@ -1,44 +1,52 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { fetchSingleProduct } from '../store/single-product';
 
 class SingleProduct extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      productId: {
-        img: 'https://wisdmlabs.com/site/wp-content/uploads/2016/04/inventory.png',
-        name: 'Gold Cactus',
-        price: 6012,
-        description: 'this is a perfectly golden cactus. Please buy it',
-      },
-    };
+  componentDidMount() {
+    const id = this.props.match.params.productId;
+    this.props.fetchProduct(id)
   }
   render() {
+    const { product } = this.props;
     return (
       <div>
-        <img src={this.state.productId.img} />
-        <h4>
-          {this.state.productId.name} - ${this.state.productId.price}
-        </h4>
-        <p>{this.state.productId.description}</p>
-        <button
-          onClick={() => {
-            console.log('added to imaginary cart');
-          }}
-        >
-          Add To Cart
-        </button>
+          {product.id ?
+          <div>
+            <h4>{product.name}</h4>
+            <img src={product.imageUrl} />
+            <h3>PRODUCT DETAIL:</h3>
+            <p>{product.description}</p>
+            <label htmlFor="quantity">
+            <h3>
+            Quantity ({product.quantity}):
+            </h3>
+            </label>
+            <div>
+            <input type='number' min='0' max={`${product.quantity}`}/>
+            </div>
+            <h3>Price: ${product.price}</h3>
+            <div>
+              <button type='button'>Add to Cart</button>
+            </div>
+          </div>
+          :
+          "Sorry Error"}
       </div>
     );
   }
 }
 
 const mapState = (state) => {
-  return {};
+  return {
+    product: state.singleProductReducer
+  };
 };
 
 const mapDispatch = (dispatch) => {
-  return {};
+  return {
+    fetchProduct: (id) => dispatch(fetchSingleProduct(id))
+  };
 };
 
 export default connect(mapState, mapDispatch)(SingleProduct);

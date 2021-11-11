@@ -10,8 +10,24 @@ const selectedProducts = products => {
     }
 }
 
+export const getSelectedProducts = (userId) => {
+    return async dispatch => {
+        try{
+            const { data } = await axios.get(`/cart/${userId}`);
+            dispatch(selectedProducts(data));
+        } catch (e){
+            console.log('Sorry could not find any products in your cart', e)
+        }
+    }
+}
+
 const initialState = [];
 
-export default function cartReducer(state = initialState, action) {
-    
+export default function cartReducer (state = initialState, action) {
+    switch (action.type){
+        case GET_SELECTED_PRODUCTS: 
+            return action.products ;
+        default:
+            return state ;
+    }
 }
