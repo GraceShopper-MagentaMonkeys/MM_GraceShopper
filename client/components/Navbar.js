@@ -6,7 +6,7 @@ import AllProducts from './AllProducts';
 import SingleProduct from './SingleProduct';
 
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
+const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
   <div className="navBarHeader">
     <h1>Magenta Monkeys</h1>
     <nav>
@@ -18,6 +18,13 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <a href="#" onClick={handleClick}>
             Logout
           </a>
+
+          {isAdmin ? (
+            <Link to={'/create'}> Admins Only: Create A New Product </Link>
+            // link to users view
+          ) : ('')}
+
+
           <Link to="/cart/10">Cart</Link>
         </div>
       ) : (
@@ -41,6 +48,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
 const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
+    isAdmin: state.auth.isAdmin
   };
 };
 

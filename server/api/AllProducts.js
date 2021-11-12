@@ -1,5 +1,6 @@
+
 const router = require('express').Router();
-// const { unstable_renderSubtreeIntoContainer } = require('react-dom');
+
 const {
   models: { Product },
 } = require('../db');
@@ -44,3 +45,5 @@ router.delete('/:productId/edit', async (req, res, next) => {
     next(error);
   }
 });
+
+
