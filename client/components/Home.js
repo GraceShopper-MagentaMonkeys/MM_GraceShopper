@@ -22,6 +22,7 @@ export const Home = (props) => {
 const mapState = (state) => {
   return {
     username: state.auth.username,
+    auth: state.auth
   };
 };
 
