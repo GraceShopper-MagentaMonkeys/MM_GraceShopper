@@ -4,10 +4,26 @@ import { Link } from 'react-router-dom';
 import { fetchSingleProduct } from '../store/single-product';
 
 class SingleProduct extends React.Component {
+  constructor(){
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
+  
   componentDidMount() {
     const id = this.props.match.params.productId;
     this.props.fetchProduct(id)
   }
+  
+  handleClick(){
+    //if the product is not in the cart 
+    // then user.addProduct(product)
+    //if procuct is in cart
+    // then Cart.findProduct()
+    //quantity = product.quantity
+    // quantity += 1
+    //update quanity
+  }
+  
   render() {
 
     const { product, isAdmin } = this.props;
@@ -30,11 +46,11 @@ class SingleProduct extends React.Component {
             </div>
             <h3>Price: ${product.price}</h3>
             <div>
-              <button type='button'>Add to Cart</button>
+              <button type='button' onClick={this.handleClick}>Add to Cart</button>
             </div>
                 { isAdmin ? (
 
-                   <Link to ={`/allproducts/${product.id}/edit`} >Edit Product</Link>
+                   <button><Link to ={`/allproducts/${product.id}/edit`} >Edit Product</Link></button>
                   )
                  :
                  ('')

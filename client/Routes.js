@@ -9,6 +9,7 @@ import SingleProduct from './components/SingleProduct';
 import Cart from './components/Cart';
 import EditProduct from './components/EditProduct';
 import allUsers from './components/all-users';
+import CreateProduct from './components/CreateProduct';
 /**
  * COMPONENT
  */
@@ -33,6 +34,7 @@ class Routes extends Component {
             <Route exact path='/allproducts/:productId/edit' component={EditProduct} />
             <Route exact path="/cart/:userId" component={Cart} />
             <Route exact path='/admin' component={allUsers}/>
+            <Route exact path='/create' component={CreateProduct} />
           </Switch>
         ) : (
           <Switch>
