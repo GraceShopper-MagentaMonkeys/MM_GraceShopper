@@ -64,7 +64,8 @@ class Cart extends React.Component {
 
 const mapState = state => {
     return {
-        userId: state.auth.id
+        userId: state.auth.id,
+        selectedProducts: state.cartReducer
     }
 }
 
