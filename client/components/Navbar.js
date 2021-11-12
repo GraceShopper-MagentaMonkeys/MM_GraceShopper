@@ -24,15 +24,13 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin }) => (
 
           <Link to={`/cart/${userId}`}>Cart</Link>
 
-
           {isAdmin ? (
+            <div>
             <Link to={'/create'}> Admins Only: Create A New Product </Link>
-            // link to users view
+            <Link to={'/admin'}> All Users </Link>
+            </div>
           ) : ('')}
-
-
           <Link to="/cart/10">Cart</Link>
-
         </div>
       ) : (
         <div>
