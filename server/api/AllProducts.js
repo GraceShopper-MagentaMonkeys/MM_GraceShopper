@@ -44,3 +44,12 @@ router.delete("/:productId/edit", async (req, res, next) => {
     next(error);
   }
 });
+
+//create a product for admin
+router.post('/create', async (req, res, next) => {
+  try {
+    res.status(201).send(await Product.create(req.body))
+  } catch(error) {
+    next(error)
+  }
+})

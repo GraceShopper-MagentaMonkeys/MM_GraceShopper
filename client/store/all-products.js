@@ -6,6 +6,7 @@ import axios from "axios";
 const SET_PRODUCTS = "SET_PRODUCTS";
 const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 const DELETE_PRODUCT = "DELETE_PRODUCT";
+const CREATE_PRODUCT = "CREATE_PRODUCT";
 
 /**
  * ACTION CREATORS
@@ -27,6 +28,13 @@ const _updateProduct = (product) => {
 const _deleteProduct = (product) => {
   return {
     type: DELETE_PRODUCT,
+    product,
+  };
+};
+
+const _createProduct = (product) => {
+  return {
+    type: CREATE_PRODUCT,
     product,
   };
 };
@@ -59,11 +67,19 @@ export const updateProduct = (product, history) => {
 };
 
 export const deleteProduct = (product, history) => {
-  console.log(product, 'product')
   return async (dispatch) => {
-    const { data: deleted } = await axios.delete(`/api/allproducts/${product}/edit`);
+    const { data: deleted } = await axios.delete(
+      `/api/allproducts/${product}/edit`
+    );
     dispatch(_deleteProduct(deleted));
-    history.go(0);
+    history.push("/allproducts");
+  };
+};
+
+export const createProduct = (product, history) => {
+  return async (dispatch) => {
+    const { data: created } = await axios.post(`/api/allproducts/create`, product);
+    dispatch(_createProduct(created));
   };
 };
 
@@ -75,6 +91,8 @@ export default function productsReducer(state = [], action) {
   switch (action.type) {
     case SET_PRODUCTS:
       return action.productsArray;
+    case CREATE_PRODUCT:
+      return [...state, action.robot];
     case UPDATE_PRODUCT:
       return state.map((product) =>
         product.productId === action.product.productId
