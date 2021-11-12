@@ -6,13 +6,14 @@ import { connect } from "react-redux";
 class EditProduct extends React.Component {
   constructor(props) {
     super(props);
+    const singleProduct = this.props.singleProduct.singleProductReducer
     this.state = {
-      name: this.props.singleProduct.singleProductReducer.name,
-      price: this.props.singleProduct.singleProductReducer.price,
-      description: this.props.singleProduct.singleProductReducer.description,
-      quantity: this.props.singleProduct.singleProductReducer.quantity,
-      imageUrl: this.props.singleProduct.singleProductReducer.imageUrl,
-      category: this.props.singleProduct.singleProductReducer.category,
+      name: singleProduct.name,
+      price: singleProduct.price,
+      description: singleProduct.description,
+      quantity: singleProduct.quantity,
+      imageUrl: singleProduct.imageUrl,
+      category: singleProduct.category,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,17 +23,18 @@ class EditProduct extends React.Component {
     this.props.fetchSingleProduct(productId);
   }
   componentDidUpdate(previousProps) {
+    const singleProduct = this.props.singleProduct.singleProductReducer
     if (
       previousProps.singleProduct.productId !==
       this.props.singleProduct.productId
     )
       this.setState({
-        name: this.props.singleProduct.singleProductReducer.name,
-        price: this.props.singleProduct.singleProductReducer.price,
-        description: this.props.singleProduct.singleProductReducer.description,
-        quantity: this.props.singleProduct.singleProductReducer.quantity,
-        imageUrl: this.props.singleProduct.singleProductReducer.imageUrl,
-        category: this.props.singleProduct.singleProductReducer.category,
+        name: singleProduct.name,
+        price: singleProduct.price,
+        description: singleProduct.description,
+        quantity: singleProduct.quantity,
+        imageUrl: singleProduct.imageUrl,
+        category: singleProduct.category,
       });
   }
   handleChange(evt) {
@@ -48,7 +50,6 @@ class EditProduct extends React.Component {
     const { name, price, description, quantity, imageUrl, category } =
       this.state;
     const { handleSubmit, handleChange } = this;
-    console.log(this.props.singleProduct);
     return (
       <div className="edit-product-container">
         <form id="product-update-form" onSubmit={handleSubmit}>

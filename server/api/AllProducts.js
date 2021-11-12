@@ -1,5 +1,4 @@
 const router = require("express").Router();
-// const { unstable_renderSubtreeIntoContainer } = require('react-dom');
 const {
   models: { Product },
 } = require("../db");
@@ -45,11 +44,4 @@ router.delete("/:productId/edit", async (req, res, next) => {
   }
 });
 
-//create a product for admin
-router.post('/create', async (req, res, next) => {
-  try {
-    res.status(201).send(await Product.create(req.body))
-  } catch(error) {
-    next(error)
-  }
-})
+

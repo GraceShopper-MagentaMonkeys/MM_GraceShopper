@@ -72,14 +72,15 @@ export const deleteProduct = (product, history) => {
       `/api/allproducts/${product}/edit`
     );
     dispatch(_deleteProduct(deleted));
-    history.push("/allproducts");
+    // history.push("/allproducts");
   };
 };
 
 export const createProduct = (product, history) => {
   return async (dispatch) => {
-    const { data: created } = await axios.post(`/api/allproducts/create`, product);
+    const { data: created } = await axios.post(`/api/create`, product);
     dispatch(_createProduct(created));
+    history.go(0)
   };
 };
 

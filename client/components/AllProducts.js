@@ -12,11 +12,9 @@ class AllProducts extends React.Component {
     const { products, isAdmin } = this.props;
     return (
       <div className="products-container">
-        {products.map((product) => {
+        {products.map((product, index) => {
           return (
-            <><Link to={`/allproducts/${product.id}`}>
-
-
+            <div key={index}><Link to={`/allproducts/${product.id}`} >
 
               <div className="imageHolder">
                 <img src={product.imageUrl} className="productImage" />
@@ -45,7 +43,8 @@ class AllProducts extends React.Component {
                 >
                   X Delete This Product X
                 </button>
-              </div></>
+              </div>
+              </div>
 
 
           );

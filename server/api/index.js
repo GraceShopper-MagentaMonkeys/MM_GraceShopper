@@ -6,6 +6,8 @@ router.use('/users', require('./users'))
 
 router.use('/allproducts', allProductsPage)
 
+router.use('/create', require('./adminCreate'))
+
 
 router.use((req, res, next) => {
   const error = new Error('Not Found')
