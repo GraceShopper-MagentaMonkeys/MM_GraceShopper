@@ -93,7 +93,7 @@ export default function productsReducer(state = [], action) {
     case SET_PRODUCTS:
       return action.productsArray;
     case CREATE_PRODUCT:
-      return [...state, action.robot];
+      return [...state, action.product];
     case UPDATE_PRODUCT:
       return state.map((product) =>
         product.productId === action.product.productId
