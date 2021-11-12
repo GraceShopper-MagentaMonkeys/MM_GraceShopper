@@ -8,10 +8,7 @@ const products = [
     description: 'Parakeet green, genuine shearling bathrobe. Made in Italy',
     quantity: 10,
     imageUrl: 'https://img.ssensemedia.com/images/b_white,g_center,f_auto,q_auto:best/212798M219236_1/bottega-veneta-green-teddy-shearling-robe.jpg',
-    category: 'style',
-    users: {
-      include: [{username: 'cody'}]
-    }
+    category: 'style'
   },  {
     name: 'Lambskin Leather Trouser',
     price: 2500,
@@ -113,5 +110,6 @@ const products = [
       quantity: 15,
       category:'food/drink',},
 ]
+
 
 module.exports = products
