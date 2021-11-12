@@ -1,7 +1,7 @@
 const router = require('express').Router();
 // const { unstable_renderSubtreeIntoContainer } = require('react-dom');
 const {
-  models: { Product },
+  models: { User, Product, Cart },
 } = require('../db');
 module.exports = router;
 
@@ -25,6 +25,34 @@ router.get('/:productId', async (req, res, next) => {
     next(e);
   }
 });
+
+router.post('/:productId', async (req, res, next)=> {
+  try{
+    // user 1 , product 1
+    
+    const product = await Product.findByPk(req.params.productId); 
+    const user = await User.findByPk(req.body.userId); 
+    const userCart = await user.getProducts(); 
+    
+    if(user.includes(product)){
+      const cartItem = await user.getProduct({ where: { productId: product.Id}}); 
+      const qty = cartItem.quantity ; 
+      qty ++
+      Cart.update({quantity: qty}, 
+        { where:{
+          productId: product.id,
+          userId: user.id
+        }})
+    } else {
+      
+      product.addUser(user);
+      
+    }
+    
+  } catch (e){
+    console.log(e);
+  }
+})
 //udpate a product for admin
 router.put('/:productId/edit', async (req, res, next) => {
   try {
@@ -44,3 +72,4 @@ router.delete('/:productId/edit', async (req, res, next) => {
     next(error);
   }
 });
+

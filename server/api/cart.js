@@ -15,3 +15,15 @@ router.get('/:id', async (req, res, next) => {
     next(e);
   }
 });
+
+/*router.post('/:id', async (req, res, next) => {
+  try{
+    const user = await User.findByPk(req.params.id);
+    const userCart = await user.getProducts();
+    const 
+    
+    //if (userCart.includes())
+  } catch (e){
+    
+  }
+})*/
