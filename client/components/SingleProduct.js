@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchSingleProduct } from '../store/single-product';
 
 class SingleProduct extends React.Component {
@@ -8,7 +9,8 @@ class SingleProduct extends React.Component {
     this.props.fetchProduct(id)
   }
   render() {
-    const { product } = this.props;
+
+    const { product, isAdmin } = this.props;
     return (
       <div>
           {product.id ?
@@ -29,6 +31,13 @@ class SingleProduct extends React.Component {
             <div>
               <button type='button'>Add to Cart</button>
             </div>
+                { isAdmin ? (
+
+                   <Link to ={`/allproducts/${product.id}/edit`} >Edit Product</Link>
+                  )
+                 :
+                 ('')
+  }
           </div>
           :
           "Sorry Error"}
@@ -39,7 +48,8 @@ class SingleProduct extends React.Component {
 
 const mapState = (state) => {
   return {
-    product: state.singleProductReducer
+    product: state.singleProductReducer,
+    isAdmin: state.auth.isAdmin
   };
 };
 

@@ -10,14 +10,36 @@ const User = db.define('user', {
   username: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    }
   },
   password: {
     type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    }
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
+  },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      isEmail: true,
+    }
+  },
+  imageUrl: {
+    type: Sequelize.STRING,
+    defaultValue: 'https://image.pngaaa.com/93/4052093-middle.png',
+    validate: {
+      isUrl: true
+    }
   }
 })
 

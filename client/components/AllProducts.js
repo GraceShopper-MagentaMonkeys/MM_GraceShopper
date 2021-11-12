@@ -7,14 +7,14 @@ class AllProducts extends React.Component {
   componentDidMount() {
     this.props.fetchProducts();
   }
-  
+
   render() {
     const { products } = this.props
     return (
       <div>
         {products.map((product) => {
           return (
-          <Link to={`/allproducts/${product.id}`} key={product.id}>
+          <Link to={`/allproducts/${product.id}`} >
             <div id='hello'>
               <div className="imageHolder">
               <img src={product.imageUrl} className="productImage"/>
@@ -25,6 +25,9 @@ class AllProducts extends React.Component {
               </h4>
               <p>Item description: {product.description}</p>
               </div>
+
+
+
             </div>
           </Link>
           );
