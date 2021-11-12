@@ -52,7 +52,7 @@ const AuthForm = (props) => {
           </label>
           <input
             className="passwordField"
-            placeholder="Insert image url"
+            placeholder="Insert image URL"
             name="imageUrl"
             type="imageUrl"
           />

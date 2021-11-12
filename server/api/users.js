@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-  models: { User, Product },
+  models: { User },
 } = require('../db');
 const { requireToken, isAdmin } = require('./gateKeepingMiddleware');
 module.exports = router;

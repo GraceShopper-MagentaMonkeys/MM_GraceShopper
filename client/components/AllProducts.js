@@ -15,19 +15,17 @@ class AllProducts extends React.Component {
         {products.map((product, index) => {
           return (
             <div key={index}><Link to={`/allproducts/${product.id}`} >
-
               <div className="imageHolder">
-                <img src={product.imageUrl} className="productImage" />
-              </div>
-
-
-              <div className="productPriceAndDescription">
                 <h4>
                   {product.name} - ${product.price}
                 </h4>
+                <img src={product.imageUrl} className="productImage" />
+              </div>
+              <div className="productPriceAndDescription">
                 <p>Item description: {product.description}</p>
               </div>
-            </Link><div>
+            </Link>
+            <div>
                 {isAdmin ? (
                   <Link to={`/allproducts/${product.id}/edit`}>
                     <button>Edit Product </button>
@@ -44,9 +42,7 @@ class AllProducts extends React.Component {
                   X Delete This Product X
                 </button>
               </div>
-              </div>
-
-
+            </div>
           );
         })}
       </div>

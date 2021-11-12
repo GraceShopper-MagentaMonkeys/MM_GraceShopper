@@ -16,11 +16,8 @@ const requireToken = async (req, res, next) => {
 
 // checking if user is Admin
 const isAdmin = (req, res, next) => {
-
-  if (req.user.isAdmin) {
-
+  if (!req.body.auth.isAdmin) {
     res.status(403).send('You do not have the access!!!')
-
   } else {
     next()
   }

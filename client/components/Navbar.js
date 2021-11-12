@@ -17,22 +17,20 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin }) => (
           {/* The navbar will show these links after you log in */}
           {console.log(userId)}
           <Link to="/home">Home</Link>
-          <Link to="/allproducts">Products</Link>
+          <Link to="/allproducts">All Products</Link>
           <a href="#" onClick={handleClick}>
             Logout
           </a>
 
           <Link to={`/cart/${userId}`}>Cart</Link>
 
-
           {isAdmin ? (
+            <div>
             <Link to={'/create'}> Admins Only: Create A New Product </Link>
-            // link to users view
+            <Link to={'/admin'}> All Users </Link>
+            </div>
           ) : ('')}
-
-
           <Link to="/cart/10">Cart</Link>
-
         </div>
       ) : (
         <div>

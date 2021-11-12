@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect, Connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class LandingPage extends React.Component {
   render() {
@@ -7,14 +8,9 @@ class LandingPage extends React.Component {
       <div>
         <h2>The 2021 Fashion Guide</h2>
         <div className="homeButtonDiv">
-          <button
-            className="homeButton"
-            onClick={() => {
-              window.location = `/allproducts/`;
-            }}
-          >
-            SHOP NOW
-          </button>
+          <Link to='/allproducts'>
+            <button>SHOP NOW</button>
+          </Link>
         </div>
         <div className="landingMainBg">
           <img
