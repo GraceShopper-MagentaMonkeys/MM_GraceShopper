@@ -55,7 +55,7 @@ router.post('/:productId', async (req, res, next)=> {
     }
   })
   //udpate a product for admin
-  router.put('/:productId/edit', async (req, res, next) => {
+  router.put('/:productId/edit', isAdmin, async (req, res, next) => {
   try {
     const singleProduct = await Product.findByPk(req.params.productId);
     res.send(await singleProduct.update(req.body));
@@ -65,7 +65,7 @@ router.post('/:productId', async (req, res, next)=> {
 });
 
 //remove a product for admin
-router.delete('/:productId/edit', async (req, res, next) => {
+router.delete('/:productId/edit', isAdmin, async (req, res, next) => {
   try {
     const singleProject = await Product.findByPk(req.params.productId);
     await singleProject.destroy();
