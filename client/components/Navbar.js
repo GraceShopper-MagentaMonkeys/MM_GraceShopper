@@ -56,7 +56,7 @@ const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
 
-    userId: state.auth.id
+    userId: state.auth.id,
 
     isAdmin: state.auth.isAdmin
 
