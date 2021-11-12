@@ -37,6 +37,7 @@ class Routes extends Component {
             <Route exact path='/create' component={CreateProduct} />
           </Switch>
         ) : (
+          
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/home" component={Home} />
