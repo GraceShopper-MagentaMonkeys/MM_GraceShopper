@@ -1,13 +1,13 @@
-const router = require("express").Router();
+const router = require('express').Router();
 // const { unstable_renderSubtreeIntoContainer } = require('react-dom');
 const {
   models: { Product },
-} = require("../db");
+} = require('../db');
 module.exports = router;
 
 //   mounted in /api/allproducts
 
-router.get("/", async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const allProduct = await Product.findAll();
     res.send(allProduct);
@@ -17,7 +17,7 @@ router.get("/", async (req, res, next) => {
 });
 
 // single product  /api/allproducts/:productId
-router.get("/:productId", async (req, res, next) => {
+router.get('/:productId', async (req, res, next) => {
   try {
     const singleProduct = await Product.findByPk(req.params.productId);
     res.send(singleProduct);
@@ -26,7 +26,7 @@ router.get("/:productId", async (req, res, next) => {
   }
 });
 //udpate a product for admin
-router.put("/:productId/edit", async (req, res, next) => {
+router.put('/:productId/edit', async (req, res, next) => {
   try {
     const singleProduct = await Product.findByPk(req.params.productId);
     res.send(await singleProduct.update(req.body));
@@ -35,7 +35,7 @@ router.put("/:productId/edit", async (req, res, next) => {
   }
 });
 //remove a product for admin
-router.delete("/:productId/edit", async (req, res, next) => {
+router.delete('/:productId/edit', async (req, res, next) => {
   try {
     const singleProject = await Product.findByPk(req.params.productId);
     await singleProject.destroy();
