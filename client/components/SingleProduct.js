@@ -11,6 +11,7 @@ class SingleProduct extends React.Component {
   render() {
 
     const { product, isAdmin } = this.props;
+
     return (
       <div>
           {product.id ?

@@ -8,6 +8,7 @@ import AllProducts from './components/AllProducts';
 import SingleProduct from './components/SingleProduct';
 import Cart from './components/Cart';
 import EditProduct from './components/EditProduct';
+import allUsers from './components/all-users';
 /**
  * COMPONENT
  */
@@ -30,6 +31,8 @@ class Routes extends Component {
             <Route exact path="/allproducts" component={AllProducts} />
             <Route exact path="/allproducts/:productId" component={SingleProduct} />
             <Route exact path='/allproducts/:productId/edit' component={EditProduct} />
+            <Route exact path="/cart/:userId" component={Cart} />
+            <Route exact path='/admin' component={allUsers}/>
           </Switch>
         ) : (
           <Switch>
@@ -39,9 +42,9 @@ class Routes extends Component {
             <Route path="/signup" component={Signup} />
             <Route exact path="/allproducts" component={AllProducts} />
             <Route path="/allproducts/:productId" component={SingleProduct} />
+            <Route exact path="/cart/:userId" component={Cart} />
           </Switch>
         )}
-        <Route path="/cart/:userId" component={Cart} />
       </div>
     );
   }

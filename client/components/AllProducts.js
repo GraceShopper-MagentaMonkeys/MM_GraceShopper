@@ -9,12 +9,14 @@ class AllProducts extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     const { products } = this.props
     return (
       <div>
-        {products.map((product) => {
+        {products.map((product, index) => {
           return (
-          <Link to={`/allproducts/${product.id}`} >
+        <div key={index}>
+          <Link to={`/allproducts/${product.id}`}>
             <div id='hello'>
               <div className="imageHolder">
               <img src={product.imageUrl} className="productImage"/>
@@ -25,11 +27,9 @@ class AllProducts extends React.Component {
               </h4>
               <p>Item description: {product.description}</p>
               </div>
-
-
-
             </div>
           </Link>
+        </div>
           );
         })}
       </div>
