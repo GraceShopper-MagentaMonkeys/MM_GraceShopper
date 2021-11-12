@@ -34,9 +34,14 @@ async function seed() {
 
   await Promise.all(
     products.map((product) => {
-      return Product.create(product, [{ include: User }]);
+      return Product.create(product);
     })
   );
+  
+  
+  const user = await User.findByPk(1);
+  const cartProduct = await Product.findByPk(1);
+  const userCart = await user.addProduct(cartProduct);
 
   console.log(`seeded ${users.length} users`);
   console.log(`seeded ${products.length} products`);

@@ -6,19 +6,20 @@ import AllProducts from './AllProducts';
 import SingleProduct from './SingleProduct';
 
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
+const Navbar = ({ handleClick, isLoggedIn, userId }) => (
   <div className="navBarHeader">
     <h1>Magenta Monkeys</h1>
     <nav>
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
+          {console.log(userId)}
           <Link to="/home">Home</Link>
           <Link to="/allproducts">Products</Link>
           <a href="#" onClick={handleClick}>
             Logout
           </a>
-          <Link to="/cart/10">Cart</Link>
+          <Link to={`/cart/${userId}`}>Cart</Link>
         </div>
       ) : (
         <div>
@@ -27,7 +28,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
           <Link to="/allproducts">All Products</Link>
-          <Link to="/cart/10">Cart</Link>
+          <Link to="/cart/guest">Cart</Link>
         </div>
       )}
     </nav>
@@ -41,6 +42,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
 const mapState = (state) => {
   return {
     isLoggedIn: !!state.auth.id,
+    userId: state.auth.id
   };
 };
 
