@@ -49,7 +49,7 @@ class SingleProduct extends React.Component {
             </div>
                 { isAdmin ? (
 
-                   <Link to ={`/allproducts/${product.id}/edit`} >Edit Product</Link>
+                   <button><Link to ={`/allproducts/${product.id}/edit`} >Edit Product</Link></button>
                   )
                  :
                  ('')

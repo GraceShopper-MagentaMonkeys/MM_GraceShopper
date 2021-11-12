@@ -1,5 +1,6 @@
+
 const router = require('express').Router();
-// const { unstable_renderSubtreeIntoContainer } = require('react-dom');
+
 const {
   models: { User, Product, Cart },
 } = require('../db');
