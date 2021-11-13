@@ -10,15 +10,21 @@ class AllUsers extends React.Component {
 
   render() {
     const { allUsersView } = this.props;
+    console.log(allUsersView)
     return (
       <div>
        { allUsersView.map((user) => {
          return (
-           <div key={user.id}>
-             <h1>username: {user.username}</h1>
-             <img src={user.imageUrl} className='productImage'/>
-             <h2>Email: {user.email}</h2>
+          <div className='cont' key={user.id}>
+           <div className='card'>
+              <img src={user.imageUrl} className='userImage'/>
+            <div className='container'>
+              <p>Account Created: {user.date}</p>
+             <p>Username: {user.username}</p>
+             <p>Email: {user.email} </p>
+            </div>
            </div>
+          </div>
          )
        })
        }

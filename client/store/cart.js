@@ -21,11 +21,12 @@ export const getSelectedProducts = (userId) => {
     }
 }
 
+
 const initialState = [];
 
 export default function cartReducer (state = initialState, action) {
     switch (action.type){
-        case GET_SELECTED_PRODUCTS: 
+        case GET_SELECTED_PRODUCTS:
             return action.products ;
         default:
             return state ;

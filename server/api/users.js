@@ -8,7 +8,7 @@ module.exports = router;
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
-      attributes: ['id', 'username', 'email', 'imageUrl'],
+      attributes: ['id', 'username', 'email', 'imageUrl','date'],
       where: {
         isAdmin: false
       }
