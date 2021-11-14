@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchUsers } from '../store/all-users'
+import { fetchUsers, deleteTheUser } from '../store/all-users'
 
 class AllUsers extends React.Component {
   componentDidMount() {
@@ -9,8 +9,7 @@ class AllUsers extends React.Component {
   }
 
   render() {
-    const { allUsersView } = this.props;
-    console.log(allUsersView)
+    const { allUsersView, remove } = this.props;
     return (
       <div>
        { allUsersView.map((user) => {
@@ -22,6 +21,9 @@ class AllUsers extends React.Component {
               <p>Account Created: {user.date}</p>
              <p>Username: {user.username}</p>
              <p>Email: {user.email} </p>
+            <div>
+              <button type='button' onClick={() =>remove(user.id)}>Delete this Account</button>
+            </div>
             </div>
            </div>
           </div>
@@ -42,7 +44,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    fetch: () => dispatch(fetchUsers())
+    fetch: () => dispatch(fetchUsers()),
+    remove: (id) => dispatch(deleteTheUser(id))
   }
 }
 
