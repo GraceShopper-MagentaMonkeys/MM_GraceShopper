@@ -184,3 +184,20 @@ h4 {
   font-size: 22;
   font-weight: bold;
 }
+
+
+#delete-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+#delete-button button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+}
+
+#delete-button button {
+  border-radius: 10px;
+  background-color: seashell;
+}

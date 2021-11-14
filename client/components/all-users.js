@@ -21,7 +21,7 @@ class AllUsers extends React.Component {
               <p>Account Created: {user.date}</p>
              <p>Username: {user.username}</p>
              <p>Email: {user.email} </p>
-            <div>
+            <div id='delete-button'>
               <button type='button' onClick={() =>remove(user.id)}>Delete this Account</button>
             </div>
             </div>
