@@ -14,35 +14,37 @@ class AllProducts extends React.Component {
       <div className="products-container">
         {products.map((product, index) => {
           return (
-            <div key={index}><Link to={`/allproducts/${product.id}`} >
-              <div className="imageHolder">
-                <h4>
-                  {product.name} - ${product.price}
-                </h4>
+            <div key={index} className='productBox'><Link to={`/allproducts/${product.id}`} >
+              {/* <div className="imageHolder"> */}
+
                 <img src={product.imageUrl} className="productImage" />
-              </div>
-              <div className="productPriceAndDescription">
+                <h2>
+                  {product.name}
+                </h2>
+                <h2>
+                {product.price}
+                </h2>
+              {/* </div> */}
+              {/* <div className="productPriceAndDescription">
                 <p>Item description: {product.description}</p>
-              </div>
+              </div> */}
             </Link>
             <div>
                 {isAdmin ? (
-                  <Link to={`/allproducts/${product.id}/edit`}>
+                  <><Link to={`/allproducts/${product.id}/edit`}>
                     <button>Edit Product </button>
-                  </Link>
+                  </Link><button
+                    className="remove"
+                    onClick={() => this.props.deleteProduct(product.id)}
+                    type="button"
+                  >
+                      X Delete This Product X
+                    </button></>
                 ) : (
                   ""
                 )}
-              </div><div>
-                <button
-                  className="remove"
-                  onClick={() => this.props.deleteProduct(product.id)}
-                  type="button"
-                >
-                  X Delete This Product X
-                </button>
               </div>
-            </div>
+              </div>
           );
         })}
       </div>
