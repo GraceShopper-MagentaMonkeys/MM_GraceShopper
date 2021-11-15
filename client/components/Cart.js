@@ -1,16 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getSelectedProducts } from '../store/cart'
+import { getSelectedProducts, addToCart } from '../store/cart'
 
 class Cart extends React.Component {
     constructor(){
         super();
         
+        this.handleClick = this.handleClick.bind(this);
     }
     
     componentDidMount(){
         const userId = this.props.userId ;
         this.props.fetchSelectedProducts(userId);
+    }
+    
+    handleClick(event, productId){
+        const userId = this.props.userId ;
+        if (event.target.name === 'add'){
+            this.props.addToCart(productId, userId);
+        }
     }
     
     render(){
@@ -37,7 +45,7 @@ class Cart extends React.Component {
                             <img src={product.imageUrl}/>
                             <h4>{product.name} $ {product.price}</h4>
                             <h4>Quantity: {product.cart.quantity}</h4>
-                            <button>+</button><button>Remove</button>
+                            <button name="add" onClick={(e) => this.handleClick(e, product.id)}>+</button><button name="minus">-</button><button>Remove</button>
                         </div>
                     ))}
                 <div>
@@ -57,7 +65,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
     return {
-        fetchSelectedProducts: userId => dispatch(getSelectedProducts(userId))
+        fetchSelectedProducts: userId => dispatch(getSelectedProducts(userId)),
+        addToCart: (productId, userId) => dispatch(addToCart(productId, userId))
     }
 }
 

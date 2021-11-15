@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchSingleProduct } from '../store/single-product';
+import { addToCart } from '../store/cart';
 
 class SingleProduct extends React.Component {
   constructor(){
@@ -14,14 +15,12 @@ class SingleProduct extends React.Component {
     this.props.fetchProduct(id)
   }
   
-  handleClick(){
-    //if the product is not in the cart 
-    // then user.addProduct(product)
-    //if procuct is in cart
-    // then Cart.findProduct()
-    //quantity = product.quantity
-    // quantity += 1
-    //update quanity
+  handleClick(event, productId){
+    console.log('click')
+    const userId = this.props.userId ;
+    if (event.target.name === 'add'){
+        this.props.addToCart(productId, userId);
+    }
   }
   
   render() {
@@ -45,7 +44,7 @@ class SingleProduct extends React.Component {
             </div>
             <h3>Price: ${product.price}</h3>
             <div>
-              <button type='button' onClick={this.handleClick}>Add to Cart</button>
+              <button type='button' name='add' onClick={(e) => this.handleClick(e, product.id)}>Add to Cart</button>
             </div>
                 { isAdmin ? (
 
@@ -65,13 +64,15 @@ class SingleProduct extends React.Component {
 const mapState = (state) => {
   return {
     product: state.singleProductReducer,
-    isAdmin: state.auth.isAdmin
+    isAdmin: state.auth.isAdmin,
+    userId: state.auth.id
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchProduct: (id) => dispatch(fetchSingleProduct(id))
+    fetchProduct: (id) => dispatch(fetchSingleProduct(id)),
+    addToCart: (productId, userId) => dispatch(addToCart(productId, userId))
   };
 };
 
