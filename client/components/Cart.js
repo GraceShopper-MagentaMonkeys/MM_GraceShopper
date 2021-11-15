@@ -20,11 +20,13 @@ class Cart extends React.Component {
         const productRender = this.props.selectedProducts || []
         
         const prices = productRender.map( product => {
-            return product.price
+            const price = parseFloat(product.price)
+            return price;
         })
         
-        const total =prices.reduce((acc, ele) => {
-                return acc + ele
+        const total = prices.reduce((acc, ele) => {
+                acc += ele
+                return acc
             }, 0)
         
         
@@ -32,7 +34,7 @@ class Cart extends React.Component {
             <div>
                     <h1>Your Items</h1>
                     {productRender.map( product => (
-                        <div key={product.name}>
+                        <div key={product.id + this.props.userId}>
                             <img src={product.imageUrl}/>
                             <h4>{product.name} ${product.price}</h4>
                             <h4>Quantity:{1}</h4>
