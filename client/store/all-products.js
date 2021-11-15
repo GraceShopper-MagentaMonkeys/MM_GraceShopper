@@ -66,13 +66,12 @@ export const updateProduct = (product, history) => {
   };
 };
 
-export const deleteProduct = (product, history) => {
+export const deleteProduct = (product) => {
   return async (dispatch) => {
     const { data: deleted } = await axios.delete(
       `/api/allproducts/${product}/edit`
     );
     dispatch(_deleteProduct(deleted));
-    // history.push("/allproducts");
   };
 };
 

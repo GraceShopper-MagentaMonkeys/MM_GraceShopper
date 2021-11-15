@@ -15,35 +15,35 @@ class AllProducts extends React.Component {
         {products.map((product, index) => {
           return (
 
-            <div key={index}><Link to={`/allproducts/${product.id}`} >
+            <div key={index} className='productBox'><Link to={`/allproducts/${product.id}`} >
+              {/* <div className="imageHolder"> */}
 
-              <div className="imageHolder">
                 <img src={product.imageUrl} className="productImage" />
-              </div>
-
-
-              <div className="productPriceAndDescription">
-                <h4>
-                  {product.name} - ${product.price}
-                </h4>
+                <h2>
+                  {product.name}
+                </h2>
+                <h2>
+                {product.price}
+                </h2>
+              {/* </div> */}
+              {/* <div className="productPriceAndDescription">
                 <p>Item description: {product.description}</p>
-              </div>
-            </Link><div>
+              </div> */}
+            </Link>
+            <div>
                 {isAdmin ? (
-                  <Link to={`/allproducts/${product.id}/edit`}>
+                  <><Link to={`/allproducts/${product.id}/edit`}>
                     <button>Edit Product </button>
-                  </Link>
+                  </Link><button
+                    className="remove"
+                    onClick={() => this.props.deleteProduct(product.id)}
+                    type="button"
+                  >
+                      X Delete This Product X
+                    </button></>
                 ) : (
                   ""
                 )}
-              </div><div>
-                <button
-                  className="remove"
-                  onClick={() => this.props.deleteProduct(product.id)}
-                  type="button"
-                >
-                  X Delete This Product X
-                </button>
               </div>
               </div>
           );
@@ -60,7 +60,7 @@ const mapState = (state) => {
   };
 };
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch, { history }) => {
   return {
     fetchProducts: () => dispatch(fetchProducts()),
     deleteProduct: (productId) => dispatch(deleteProduct(productId, history)),

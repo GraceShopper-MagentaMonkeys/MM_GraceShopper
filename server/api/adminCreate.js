@@ -3,6 +3,7 @@ const {
   models: { Product },
 } = require("../db");
 module.exports = router;
+const { isAdmin } = require('./gateKeepingMiddleware')
 
 //create a product for admin
 router.post('/', async (req, res, next) => {

@@ -103,16 +103,13 @@ class EditProduct extends React.Component {
 
           <button type="submit">Submit these changes!</button>
           <button
-            className="remove"
-            onClick={() =>
-              this.props.deleteProduct(
-                this.props.singleProduct.singleProductReducer.id
-              )
-            }
-            type="button"
-          >
-            X Delete This Product X
-          </button>
+                  className="remove"
+                  onClick={() => this.props.deleteProduct(this.props.singleProduct.singleProductReducer.id)}
+                  type="button"
+                >
+                  Delete
+                </button>
+
         </form>
         <form onSubmit={(ev) => ev.preventDefault()} />
       </div>

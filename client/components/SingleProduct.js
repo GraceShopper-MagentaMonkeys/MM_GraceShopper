@@ -9,7 +9,7 @@ class SingleProduct extends React.Component {
     super();
     this.handleClick = this.handleClick.bind(this);
   }
-  
+
   componentDidMount() {
     const id = this.props.match.params.productId;
     this.props.fetchProduct(id)
@@ -22,16 +22,24 @@ class SingleProduct extends React.Component {
         window.alert('Thank You! Your cart has been updated!')
     }
   }
-  
+
   render() {
 
     const { product, isAdmin } = this.props;
+
     return (
       <div>
-          {product.id ?
-          <div>
-            <h4>{product.name}</h4>
-            <img src={product.imageUrl} />
+          { product.id ?
+          <div className='singleProductContainer'>
+            <div className='productNameImage'>
+
+            <h1>{product.name}</h1>
+            <br />
+              <br />
+            <img className='singleProductImage' src={product.imageUrl} />
+            </div>
+
+            <div className='productDetails'>
             <h3>PRODUCT DETAIL:</h3>
             <p>{product.description}</p>
             <label htmlFor="quantity">
@@ -45,6 +53,8 @@ class SingleProduct extends React.Component {
             <h3>Price: ${product.price}</h3>
             <div>
               <button type='button' name='add' onClick={(e) => this.handleClick(e, product.id)}>Add to Cart</button>
+
+            </div>
             </div>
                 { isAdmin ? (
 
@@ -52,10 +62,10 @@ class SingleProduct extends React.Component {
                   )
                  :
                  ('')
-  }
+                }
           </div>
           :
-          "Sorry Error"}
+          ("Sorry Error")}
       </div>
     );
   }

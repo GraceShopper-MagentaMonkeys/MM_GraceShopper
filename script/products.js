@@ -81,7 +81,7 @@ const products = [
       name:'Teapot',
       price: 300,
       description: 'Beige stoneware teapot with organic bamboo handle and lid',
-      imageUrl: 'https://www.ssense.com/en-us/everything-else/product/stelton/theo-teapot-1.25-l/8657831',
+      imageUrl: 'https://img.ssensemedia.com/images/b_white,g_center,f_auto,q_auto:best/212169M609009_1/stelton-theo-teapot-125-l.jpg',
       quantity:15,
       category: 'food/drink',
     },

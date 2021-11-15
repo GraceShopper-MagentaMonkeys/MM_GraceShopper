@@ -35,13 +35,14 @@ const User = db.define('user', {
     },
   },
   imageUrl: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     defaultValue: 'https://image.pngaaa.com/93/4052093-middle.png',
-    validate: {
-      isUrl: true,
-    },
   },
-});
+  date: {
+    type: Sequelize.DATEONLY,
+    defaultValue: Sequelize.NOW,
+  }
+})
 
 module.exports = User;
 

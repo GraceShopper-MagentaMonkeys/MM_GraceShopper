@@ -1,10 +1,10 @@
+const router = require("express").Router();
+// const { unstable_renderSubtreeIntoContainer } = require('react-dom');
+const { models: { Product, Cart, User  } } = require("../db");
+const { isAdmin } = require("./gateKeepingMiddleware");
 
-const router = require('express').Router();
-
-const {
-  models: { User, Product, Cart },
-} = require('../db');
 module.exports = router;
+
 
 //   mounted in /api/allproducts
 
@@ -63,6 +63,7 @@ router.post('/:productId/add', async (req, res, next)=> {
 })
 //udpate a product for admin
 router.put('/:productId/edit', async (req, res, next) => {
+
   try {
     const singleProduct = await Product.findByPk(req.params.productId);
     res.send(await singleProduct.update(req.body));
@@ -70,8 +71,9 @@ router.put('/:productId/edit', async (req, res, next) => {
     next(error);
   }
 });
+
 //remove a product for admin
-router.delete('/:productId/edit', async (req, res, next) => {
+router.delete('/:productId/edit',async (req, res, next) => {
   try {
     const singleProject = await Product.findByPk(req.params.productId);
     await singleProject.destroy();
