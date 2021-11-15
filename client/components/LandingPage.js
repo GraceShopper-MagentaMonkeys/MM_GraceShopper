@@ -16,7 +16,8 @@ class LandingPage extends React.Component {
           <h4> Goop, but now for men. </h4>
           <div className="homeButtonDiv">
           <Link to='/allproducts'>
-            <button>SHOP NOW</button>
+            {/* <button>SHOP NOW</button> */}
+            <img src='https://www.myss.com/wp-content/uploads/2020/11/Shop-Now.png' />
           </Link>
           </div>
           {/* <img
