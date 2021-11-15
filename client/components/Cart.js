@@ -42,7 +42,7 @@ class Cart extends React.Component {
                     <h1>Your Items</h1>
                     {productRender.map( product => (
                         <div key={product.id + this.props.userId}>
-                            <img src={product.imageUrl}/>
+                            <img className="imageHolder" src={product.imageUrl}/>
                             <h4>{product.name} $ {product.price}</h4>
                             <h4>Quantity: {product.cart.quantity}</h4>
                             <button name="add" onClick={(e) => this.handleClick(e, product.id)}>+</button><button name="minus">-</button><button>Remove</button>

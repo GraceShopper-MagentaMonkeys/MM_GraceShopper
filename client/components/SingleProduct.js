@@ -16,10 +16,10 @@ class SingleProduct extends React.Component {
   }
   
   handleClick(event, productId){
-    console.log('click')
     const userId = this.props.userId ;
     if (event.target.name === 'add'){
         this.props.addToCart(productId, userId);
+        window.alert('Thank You! Your cart has been updated!')
     }
   }
   
