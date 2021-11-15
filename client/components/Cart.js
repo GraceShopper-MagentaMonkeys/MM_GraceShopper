@@ -18,8 +18,9 @@ class Cart extends React.Component {
         const productRender = this.props.selectedProducts || []
         
         const prices = productRender.map( product => {
-            const price = parseFloat(product.price)
-            return price;
+            const price = parseFloat(product.price);
+            const itemTotal = price * product.cart.quantity;
+            return itemTotal;
         })
         
         const total = prices.reduce((acc, ele) => {
