@@ -27,35 +27,43 @@ router.get('/:productId', async (req, res, next) => {
   }
 });
 
-router.post('/:productId', async (req, res, next)=> {
+router.post('/:productId/add', async (req, res, next)=> {
   try{
-    // user 1 , product 1
-
-    const product = await Product.findByPk(req.params.productId);
-    const user = await User.findByPk(req.body.userId);
-    const userCart = await user.getProducts();
-
-    if(user.includes(product)){
-      const cartItem = await user.getProduct({ where: { productId: product.Id}});
-      let qty = cartItem.quantity;
-      qty++
-      Cart.update({quantity: qty},
-        { where:{
+    
+    const product = await Product.findByPk(req.params.productId); 
+    const user = await User.findByPk(req.body.userId); 
+    let usersProducts = await user.getProducts();
+    usersProducts = usersProducts.map(ele => ele.dataValues.id);
+   
+    if(usersProducts.includes(product.id)){
+      const cartItem = await Cart.findOne({ 
+        where: {
+          productId: product.id,
+          userId: user.id
+      }}); 
+      let qty = cartItem.quantity ;
+      qty ++
+      await Cart.update({ quantity: qty }, 
+        { where: {
           productId: product.id,
           userId: user.id
         }})
-      } else {
-
-        product.addUser(user);
-
-      }
-
-    } catch (e){
-      console.log(e);
+      
+    } else {
+      
+      await user.addProduct(product);
+      
     }
-  })
-  //udpate a product for admin
-  router.put('/:productId/edit', isAdmin, async (req, res, next) => {
+      res.status(200).end();
+    
+    
+  } catch (e){
+    console.log(e);
+  }
+})
+//udpate a product for admin
+router.put('/:productId/edit', async (req, res, next) => {
+
   try {
     const singleProduct = await Product.findByPk(req.params.productId);
     res.send(await singleProduct.update(req.body));

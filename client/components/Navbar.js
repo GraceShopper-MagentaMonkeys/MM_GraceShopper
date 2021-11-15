@@ -24,8 +24,6 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin }) => (
             Logout
           </a>
 
-          <Link to={`/cart/${userId}`}>Cart</Link>
-
           {isAdmin ? (
             <div>
             <Link to={'/create'}> Admins Only: Create A New Product </Link>

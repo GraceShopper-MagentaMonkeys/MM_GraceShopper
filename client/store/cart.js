@@ -10,7 +10,7 @@ const selectedProducts = products => {
     }
 }
 
-export const getSelectedProducts = (userId) => {
+export const getSelectedProducts = userId => {
     return async dispatch => {
         try{
             const { data } = await axios.get(`/api/cart/${userId}`);
@@ -21,6 +21,16 @@ export const getSelectedProducts = (userId) => {
     }
 }
 
+export const addToCart = (productId, userId) => {
+    return async dispatch => {
+        try{
+            await axios.post(`/api/allproducts/${productId}/add`, { userId: userId });
+            dispatch(getSelectedProducts(userId));
+        } catch (e){
+            console.log('Could not add to cart database', e)
+        }
+    }
+}
 
 const initialState = [];
 

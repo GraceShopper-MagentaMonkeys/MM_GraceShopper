@@ -1,18 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getSelectedProducts } from '../store/cart'
+import { getSelectedProducts, addToCart } from '../store/cart'
 
 class Cart extends React.Component {
     constructor(){
         super();
         
+        this.handleClick = this.handleClick.bind(this);
     }
     
     componentDidMount(){
         const userId = this.props.userId ;
-        console.log(userId);
-        console.log(this.props);
         this.props.fetchSelectedProducts(userId);
+    }
+    
+    handleClick(event, productId){
+        const userId = this.props.userId ;
+        if (event.target.name === 'add'){
+            this.props.addToCart(productId, userId);
+        }
     }
     
     render(){
@@ -20,11 +26,14 @@ class Cart extends React.Component {
         const productRender = this.props.selectedProducts || []
         
         const prices = productRender.map( product => {
-            return product.price
+            const price = parseFloat(product.price);
+            const itemTotal = price * product.cart.quantity;
+            return itemTotal;
         })
         
-        const total =prices.reduce((acc, ele) => {
-                return acc + ele
+        const total = prices.reduce((acc, ele) => {
+                acc += ele
+                return acc
             }, 0)
         
         
@@ -32,15 +41,15 @@ class Cart extends React.Component {
             <div>
                     <h1>Your Items</h1>
                     {productRender.map( product => (
-                        <div key={product.name}>
-                            <img src={product.imageUrl}/>
-                            <h4>{product.name} ${product.price}</h4>
-                            <h4>Quantity:{1}</h4>
-                            <button>+</button><button>Remove</button>
+                        <div key={product.id + this.props.userId}>
+                            <img className="imageHolder" src={product.imageUrl}/>
+                            <h4>{product.name} $ {product.price}</h4>
+                            <h4>Quantity: {product.cart.quantity}</h4>
+                            <button name="add" onClick={(e) => this.handleClick(e, product.id)}>+</button><button name="minus">-</button><button>Remove</button>
                         </div>
                     ))}
                 <div>
-                    <h2>Subtotal: ${total}</h2>
+                    <h2>Subtotal: $ {total}</h2>
                 </div>
             </div>
         )
@@ -56,7 +65,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
     return {
-        fetchSelectedProducts: userId => dispatch(getSelectedProducts(userId))
+        fetchSelectedProducts: userId => dispatch(getSelectedProducts(userId)),
+        addToCart: (productId, userId) => dispatch(addToCart(productId, userId))
     }
 }
 

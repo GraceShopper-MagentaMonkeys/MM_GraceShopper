@@ -14,6 +14,7 @@ class AllProducts extends React.Component {
       <div className="products-container">
         {products.map((product, index) => {
           return (
+
             <div key={index} className='productBox'><Link to={`/allproducts/${product.id}`} >
               {/* <div className="imageHolder"> */}
 
@@ -59,7 +60,7 @@ const mapState = (state) => {
   };
 };
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch, { history }) => {
   return {
     fetchProducts: () => dispatch(fetchProducts()),
     deleteProduct: (productId) => dispatch(deleteProduct(productId, history)),
