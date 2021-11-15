@@ -10,8 +10,6 @@ class Cart extends React.Component {
     
     componentDidMount(){
         const userId = this.props.userId ;
-        console.log(userId);
-        console.log(this.props);
         this.props.fetchSelectedProducts(userId);
     }
     

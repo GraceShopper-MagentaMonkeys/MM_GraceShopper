@@ -14,6 +14,7 @@ export const getSelectedProducts = (userId) => {
     return async dispatch => {
         try{
             const { data } = await axios.get(`/api/cart/${userId}`);
+            console.log(data)
             dispatch(selectedProducts(data));
         } catch (e){
             console.log('Sorry could not find any products in your cart', e)
