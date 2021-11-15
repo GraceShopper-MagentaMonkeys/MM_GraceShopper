@@ -28,7 +28,6 @@ router.get('/:productId', async (req, res, next) => {
 
 router.post('/:productId/add', async (req, res, next)=> {
   try{
-    // user 1 , product 1
     
     const product = await Product.findByPk(req.params.productId); 
     const user = await User.findByPk(req.body.userId); 

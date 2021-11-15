@@ -34,13 +34,13 @@ class Cart extends React.Component {
                     {productRender.map( product => (
                         <div key={product.id + this.props.userId}>
                             <img src={product.imageUrl}/>
-                            <h4>{product.name} ${product.price}</h4>
-                            <h4>Quantity:{1}</h4>
+                            <h4>{product.name} $ {product.price}</h4>
+                            <h4>Quantity: {product.cart.quantity}</h4>
                             <button>+</button><button>Remove</button>
                         </div>
                     ))}
                 <div>
-                    <h2>Subtotal: ${total}</h2>
+                    <h2>Subtotal: $ {total}</h2>
                 </div>
             </div>
         )
