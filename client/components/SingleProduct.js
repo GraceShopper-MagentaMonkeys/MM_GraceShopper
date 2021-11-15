@@ -8,14 +8,14 @@ class SingleProduct extends React.Component {
     super();
     this.handleClick = this.handleClick.bind(this);
   }
-  
+
   componentDidMount() {
     const id = this.props.match.params.productId;
     this.props.fetchProduct(id)
   }
-  
+
   handleClick(){
-    //if the product is not in the cart 
+    //if the product is not in the cart
     // then user.addProduct(product)
     //if procuct is in cart
     // then Cart.findProduct()
@@ -23,7 +23,7 @@ class SingleProduct extends React.Component {
     // quantity += 1
     //update quanity
   }
-  
+
   render() {
 
     const { product, isAdmin } = this.props;
@@ -31,9 +31,16 @@ class SingleProduct extends React.Component {
     return (
       <div>
           {product.id ?
-          <div>
-            <h4>{product.name}</h4>
-            <img src={product.imageUrl} />
+          <div className='singleProductContainer'>
+            <div className='productNameImage'>
+
+            <h1>{product.name}</h1>
+            <br />
+              <br />
+            <img className='singleProductImage' src={product.imageUrl} />
+            </div>
+
+            <div className='productDetails'>
             <h3>PRODUCT DETAIL:</h3>
             <p>{product.description}</p>
             <label htmlFor="quantity">
@@ -46,6 +53,7 @@ class SingleProduct extends React.Component {
             </div>
             <h3>Price: ${product.price}</h3>
             <div>
+            </div>
               <button type='button' onClick={this.handleClick}>Add to Cart</button>
             </div>
                 { isAdmin ? (
