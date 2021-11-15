@@ -11,11 +11,13 @@ class Cart extends React.Component {
     
     componentDidMount(){
         const userId = this.props.userId ;
+        console.log(userId);
         this.props.fetchSelectedProducts(userId);
     }
     
     handleClick(event, productId){
         const userId = this.props.userId ;
+        console.log(userId);
         if (event.target.name === 'add'){
             this.props.addToCart(productId, userId);
         }
