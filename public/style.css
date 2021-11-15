@@ -77,14 +77,14 @@ h4 {
   background-color: #95a7f8;
   font-family: 'Prata', serif;
  font-weight: 400;
- min-height: 550px;
- padding: 50px;
- padding-top: 120px;
+ max-height: 750px;
+ padding: 30px;
+ padding-top: 30px;
  padding-right: 600px;
  justify-content: left;
+ margin: 25px;
+ border-radius: 30px;
 }
-
-
 
 .homeImages {
   width: 50%;
@@ -92,10 +92,9 @@ h4 {
   justify-content: space-around;
 }
 .homeButtonDiv {
- justify-content: left;
+ /* justify-content: center; */
   transform: scale(0.3);
   margin-right: 100%;
-
 }
 .homeButton {
   font-family: 'Playfair Display', serif;
@@ -234,7 +233,7 @@ h4 {
 .logo {
   height: 120px;
   width: 160px;
-  margin-left:50px
+  margin-left:20px
 }
 
 
@@ -303,18 +302,20 @@ h4 {
 
 .singleProductContainer {
   /* margin-left: 200px; */
-  margin-right: 200px
+  /* margin-right: 200px */
 }
 
 .productDetails{
   padding-top: 30px;
   border: 3px solid black;
-  padding: 35px
+  padding: 30px;
+  /* max-height: 200px; */
+  max-width: 200px
 }
 
 .singleProductImage {
-  max-height: 800px;
-  max-width: 800px;
+  max-height: 600px;
+  max-width: 600px;
 
 }
 
@@ -324,3 +325,4 @@ h4 {
   margin-top: 28px;
   text-align: center;
 }
+
