@@ -13,6 +13,7 @@ const selectedProducts = products => {
 export const getSelectedProducts = userId => {
     return async dispatch => {
         try{
+            // JOE_CR: How can we make this URL /api/cart instead of passing up the user id too? I would argue that the userId is not necessary.
             const { data } = await axios.get(`/api/cart/${userId}`);
             dispatch(selectedProducts(data));
         } catch (e){
