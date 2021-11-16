@@ -8,7 +8,7 @@ module.exports = router;
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
-      attributes: ['id', 'username', 'email', 'imageUrl','date'],
+      attributes: ['id', 'username', 'email', 'imageUrl','createdAt'],
       where: {
         isAdmin: false
       }
@@ -20,7 +20,7 @@ router.get('/', async (req, res, next) => {
 });
 
 router.delete('/:userId', async (req, res, next) => {
-  
+
   try {
     const userToRemove = await User.findByPk(req.params.userId)
     await userToRemove.destroy();

@@ -76,9 +76,16 @@ export const getProductCategory = (productCategory) => {
 
 export const updateProduct = (product, history) => {
   return async (dispatch) => {
+    const token = window.localStorage.getItem('token')
+
     const { data: updated } = await axios.put(
       `/api/allproducts/${product.singleProductReducer.id}/edit`,
-      product
+      product,
+      {
+        headers: {
+          authorization: token // passing token
+        }
+      }
     );
     dispatch(_updateProduct(updated));
     history.push(`/allproducts/${product.singleProductReducer.id}`);
@@ -87,8 +94,12 @@ export const updateProduct = (product, history) => {
 
 export const deleteProduct = (product) => {
   return async (dispatch) => {
-    const { data: deleted } = await axios.delete(
-      `/api/allproducts/${product}/edit`
+    const token = window.localStorage.getItem('token')
+    const { data: deleted } = await axios.delete(`/api/allproducts/${product}/edit`, {
+      headers: {
+        authorization: token,
+      }
+    }
     );
     dispatch(_deleteProduct(deleted));
   };
@@ -96,7 +107,14 @@ export const deleteProduct = (product) => {
 
 export const createProduct = (product, history) => {
   return async (dispatch) => {
-    const { data: created } = await axios.post(`/api/create`, product);
+    const token = window.localStorage.getItem('token')
+    const { data: created } = await axios.post(`/api/create`, product,
+    {
+      headers: {
+        authorization: token,
+      }
+    }
+    );
     dispatch(_createProduct(created));
     history.go(0)
   };

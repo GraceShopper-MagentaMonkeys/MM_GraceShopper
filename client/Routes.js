@@ -10,7 +10,7 @@ import Cart from './components/Cart';
 import EditProduct from './components/EditProduct';
 import allUsers from './components/all-users';
 import CreateProduct from './components/CreateProduct';
-import SortedProducts from './components/SortedProducts';
+
 
 /**
  * COMPONENT
@@ -47,7 +47,7 @@ class Routes extends Component {
           <Route path="/create" component={CreateProduct} />
           <Route
             path="/allproducts/sort/:productCategory"
-            component={SortedProducts}
+            component={AllProducts}
           />
         </Switch>
       </div>
