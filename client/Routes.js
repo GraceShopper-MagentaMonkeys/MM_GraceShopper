@@ -10,7 +10,7 @@ import Cart from './components/Cart';
 import EditProduct from './components/EditProduct';
 import allUsers from './components/all-users';
 import CreateProduct from './components/CreateProduct';
-import SortedProducts from './components/SortedProducts';
+
 
 /**
  * COMPONENT
@@ -37,7 +37,7 @@ class Routes extends Component {
             <Route exact path="/cart/:userId" component={Cart} />
             <Route exact path='/admin' component={allUsers}/>
             <Route exact path='/create' component={CreateProduct} />
-            <Route exact path ='/allproducts/sort/:productCategory' component={SortedProducts} />
+            <Route exact path ='/allproducts/sort/:productCategory' component={AllProducts} />
           </Switch>
         ) : (
 
@@ -49,7 +49,7 @@ class Routes extends Component {
             <Route exact path="/allproducts" component={AllProducts} />
             <Route exact path="/allproducts/:productId" component={SingleProduct} />
             <Route exact path="/cart/:userId" component={Cart} />
-            <Route exact path ='/allproducts/sort/:productCategory' component={SortedProducts} />
+            <Route exact path ='/allproducts/sort/:productCategory' component={AllProducts} />
           </Switch>
         )}
       </div>
