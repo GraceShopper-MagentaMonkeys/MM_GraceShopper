@@ -86,7 +86,7 @@ router.put('/:productId/edit', requireToken, isAdmin, async (req, res, next) => 
 });
 
 //remove a product for admin
-router.delete('/:productId/edit', requireToken,isAdmin, async (req, res, next) => {
+router.delete('/:productId/edit', requireToken, isAdmin, async (req, res, next) => {
   try {
     const singleProject = await Product.findByPk(req.params.productId);
     await singleProject.destroy();

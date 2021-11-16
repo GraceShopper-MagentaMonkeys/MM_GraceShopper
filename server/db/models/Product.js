@@ -22,7 +22,7 @@ const Product = db.define('product', {
       defaultValue: 1,
   },
   category: {
-    type: Sequelize.ENUM(['food/drink', 'style', 'home']),
+    type: Sequelize.ENUM(['food-drink', 'style', 'home']),
     defaultValue: 'home',
       allowNull: false,
   },
