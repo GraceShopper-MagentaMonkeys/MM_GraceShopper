@@ -24,13 +24,11 @@ async function seed() {
       email: 'cody-admin@banana.com',
       imageUrl:
         'https://www.seekpng.com/png/detail/367-3670105_admin-login-logo-png.png',
-      date: new Date(),
     }),
     User.create({
       username: 'murphy',
       password: '123',
       email: 'murphy-2@banana.com',
-      date: new Date(),
     }),
   ]);
 
