@@ -19,6 +19,7 @@ class SingleProduct extends React.Component {
     const userId = this.props.userId ;
     if (event.target.name === 'add'){
         this.props.addToCart(productId, userId);
+        // JOE_CR: Using alerts should be avoided in most cases because they are a blocking operation, and feel a bit tacky to modern web users.
         window.alert('Thank You! Your cart has been updated!')
     }
   }
