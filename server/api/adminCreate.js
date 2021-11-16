@@ -3,12 +3,12 @@ const {
   models: { Product },
 } = require("../db");
 module.exports = router;
-const { isAdmin } = require('./gateKeepingMiddleware')
+const { requireToken, isAdmin } = require('./gateKeepingMiddleware')
 
 //create a product for admin
-router.post('/', async (req, res, next) => {
+router.post('/',requireToken, isAdmin, async (req, res, next) => {
   try {
-    res.status(201).send(await Product.create(req.body))
+    res.status(201).send(await Product.create(req.body));
   } catch(error) {
     next(error)
   }

@@ -38,10 +38,6 @@ const User = db.define('user', {
     type: Sequelize.TEXT,
     defaultValue: 'https://image.pngaaa.com/93/4052093-middle.png',
   },
-  date: {
-    type: Sequelize.DATEONLY,
-    defaultValue: Sequelize.NOW,
-  }
 })
 
 module.exports = User;
