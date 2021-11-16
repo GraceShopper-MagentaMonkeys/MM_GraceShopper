@@ -24,13 +24,13 @@ async function seed() {
       email: 'cody-admin@banana.com',
       imageUrl:
         'https://www.seekpng.com/png/detail/367-3670105_admin-login-logo-png.png',
-      date: new Date()
+      date: new Date(),
     }),
     User.create({
       username: 'murphy',
       password: '123',
       email: 'murphy-2@banana.com',
-      date: new Date()
+      date: new Date(),
     }),
   ]);
 
@@ -40,10 +40,10 @@ async function seed() {
     })
   );
 
-
-  const user = await User.findByPk(1);
-  const cartProduct = await Product.findByPk(1);
-  const userCart = await user.addProduct(cartProduct);
+  // puts the default item into cart - no longer needed
+  // const user = await User.findByPk(1);
+  // const cartProduct = await Product.findByPk(1);
+  // const userCart = await user.addProduct(cartProduct);
 
   console.log(`seeded ${users.length} users`);
   console.log(`seeded ${products.length} products`);
