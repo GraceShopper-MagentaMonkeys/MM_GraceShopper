@@ -21,37 +21,35 @@ class Routes extends Component {
   }
 
   render() {
-    const { isLoggedIn } = this.props;
-
+    const { isLoggedIn, isAdmin } = this.props;
     return (
       <div>
-        {isLoggedIn ? (
-          <Switch>
-            <Route path="/login" component={Home} />
-            <Route path="/home" component={Home} />
-            <Route path="/signup" component={Home} />
-            {/* <Redirect to="/home" /> */}
-            <Route exact path="/allproducts" component={AllProducts} />
-            <Route exact path="/allproducts/:productId" component={SingleProduct} />
-            <Route exact path='/allproducts/:productId/edit' component={EditProduct} />
-            <Route exact path="/cart/:userId" component={Cart} />
-            <Route exact path='/admin' component={allUsers}/>
-            <Route exact path='/create' component={CreateProduct} />
-            <Route exact path ='/allproducts/sort/:productCategory' component={SortedProducts} />
-          </Switch>
-        ) : (
-
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/home" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route exact path="/allproducts" component={AllProducts} />
-            <Route exact path="/allproducts/:productId" component={SingleProduct} />
-            <Route exact path="/cart/:userId" component={Cart} />
-            <Route exact path ='/allproducts/sort/:productCategory' component={SortedProducts} />
-          </Switch>
-        )}
+        <Switch>
+          <Route path="/login" component={isLoggedIn ? Home : Login} />
+          <Route path="/home" component={Home} />
+          <Route exact path="/" exact component={Home} />
+          <Route path="/signup" component={isLoggedIn ? Home : Signup} />
+          <Route exact path="/allproducts" component={AllProducts} />
+          <Route
+            exact
+            path="/allproducts/:productId"
+            component={SingleProduct}
+          />
+          <Route
+            path="/allproducts/:productId/edit"
+            component={isAdmin && isLoggedIn ? EditProduct : ''}
+          />
+          <Route path="/cart/:userId" component={Cart} />
+          <Route
+            path="/admin"
+            component={isAdmin && isLoggedIn ? allUsers : ''}
+          />
+          <Route path="/create" component={CreateProduct} />
+          <Route
+            path="/allproducts/sort/:productCategory"
+            component={SortedProducts}
+          />
+        </Switch>
       </div>
     );
   }
@@ -65,6 +63,7 @@ const mapState = (state) => {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
     // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
     isLoggedIn: !!state.auth.id,
+    isAdmin: state.auth.isAdmin,
   };
 };
 
