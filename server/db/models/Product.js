@@ -22,6 +22,8 @@ const Product = db.define('product', {
       allowNull: false,
       defaultValue: 1,
   },
+  // JOE_CR: How many more categories will you add over time? Should this be modeled differently in order to allow an
+  // admin user to add categories as needed?
   category: {
     type: Sequelize.ENUM(['food/drink', 'style', 'home']),
     defaultValue: 'home',

@@ -27,6 +27,7 @@ export const addToCart = (productId, userId) => {
         try{
             // JOE_CR: This feels like a kind of random URL to be a "cart add".
             await axios.post(`/api/allproducts/${productId}/add`, { userId: userId });
+            // JOE_CR: This seems inefficient as a follow-up to cart add. Possibly the POST route can respond with the updated cart.
             dispatch(getSelectedProducts(userId));
         } catch (e){
             console.log('Could not add to cart database', e)
