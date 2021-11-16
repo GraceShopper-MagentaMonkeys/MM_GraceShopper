@@ -326,3 +326,22 @@ h4 {
   text-align: center;
 }
 
+.categoriesLink {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 30%;
+  text-align: center;
+  font-family: 'Work Sans', sans-serif;
+  color: black
+  /* align-items: baseline; */
+  /* transform: scale(0.7); */
+}
+
+.categoryImage {
+  max-height: 500px;
+  max-width: 500px;
+  margin-left: 10px;
+  margin-right: 10px
+}
+
