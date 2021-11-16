@@ -342,6 +342,7 @@ h4 {
   max-height: 500px;
   max-width: 500px;
   margin-left: 10px;
-  margin-right: 10px
+  margin-right: 10px;
+  border-radius: 25px
 }
 
