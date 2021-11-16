@@ -32,6 +32,22 @@ export const addToCart = (productId, userId) => {
     }
 }
 
+export const removeFromCart = (productId, userId, method) => {
+    return async dispatch => {
+        try {
+            if( method === 'decrease'){
+                await axios.put(`/api/cart/${userId}/decrease`, { productId: productId });
+                dispatch(getSelectedProducts(userId));
+            } else if( method === 'remove' ){
+                await axios.put(`/api/cart/${userId}/remove`, { productId: productId });
+                dispatch(getSelectedProducts(userId));
+            }
+        } catch (e){
+            console.log(e)
+        }
+    }
+}
+
 const initialState = [];
 
 export default function cartReducer (state = initialState, action) {

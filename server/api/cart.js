@@ -53,23 +53,49 @@ router.post('/:userId/add', async (req, res, next) => {
   }
 })
 
-router.delete('/:userId/remove', async (req, res, next) => {
-
-  const productToRemove = await Cart.findOne( { 
-    where: {
-      productId: req.body.productId,
-      userId: req.params.userId
-  }});
+router.put('/:userId/decrease', async (req, res, next) => {
+console.log('route hit');
+console.log('product', req.body);
+  try {
   
-  if (productToRemove.quantity > 1){
+    const productToRemove = await Cart.findOne( { 
+      where: {
+        productId: req.body.productId,
+        userId: req.params.userId
+    }});
     
-    productToRemove.quantity -- ;
-    await productToRemove.save();
+    if (productToRemove.quantity > 1){
+      
+      productToRemove.quantity -- ;
+      await productToRemove.save();
+      
+    } else {
+      
+      await productToRemove.destroy();
+      
+    }
     
-  } else {
+    res.status(200).end();
     
-    await productToRemove.destroy()
+  } catch (e){
+    console.log(e);
   }
   
-  res.status(200).end();
+})
+
+router.put('/:userId/remove', async (req, res, next) => {
+  try{
+    
+    const productToRemove = await Cart.findOne( { 
+      where: {
+        productId: req.body.productId,
+        userId: req.params.userId
+    }});
+    
+    await productToRemove.destroy();
+    res.status(200).end();
+  
+  } catch(e){
+    console.log(e);
+  }
 })

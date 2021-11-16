@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getSelectedProducts, addToCart } from '../store/cart'
+import { getSelectedProducts, addToCart, removeFromCart } from '../store/cart'
 
 class Cart extends React.Component {
     constructor(){
@@ -19,9 +19,13 @@ class Cart extends React.Component {
     
     handleClick(event, productId){
         const userId = this.props.userId ;
-        console.log(userId);
+        console.log(productId);
         if (event.target.name === 'add'){
             this.props.addToCart(productId, userId);
+        } else if (event.target.name === 'minus'){
+            this.props.removeFromCart(productId, userId, 'decrease');
+        } else if (event.target.name === 'remove'){
+            this.props.removeFromCart(productId, userId, 'remove');
         }
     }
     
@@ -51,7 +55,9 @@ class Cart extends React.Component {
                                 <img className="imageHolder" src={product.imageUrl}/>
                                 <h4>{product.name} $ {product.price}</h4>
                                 <h4>Quantity: {product.cart.quantity}</h4>
-                                <button name="add" onClick={(e) => this.handleClick(e, product.id)}>+</button><button name="minus">-</button><button>Remove</button>
+                                <button name="add" onClick={(e) => this.handleClick(e, product.id)}>+</button>
+                                <button name="minus" onClick={(e) => this.handleClick(e, product.id)}>-</button>
+                                <button name="remove" onClick={(e) => this.handleClick(e, product.id)}>Remove</button>
                             </div>
                         ))}
                         <div>
@@ -75,7 +81,8 @@ const mapState = state => {
 const mapDispatch = dispatch => {
     return {
         fetchSelectedProducts: userId => dispatch(getSelectedProducts(userId)),
-        addToCart: (productId, userId) => dispatch(addToCart(productId, userId))
+        addToCart: (productId, userId) => dispatch(addToCart(productId, userId)),
+        removeFromCart: (productId, userId, method) => dispatch(removeFromCart(productId, userId, method))
     }
 }
 
