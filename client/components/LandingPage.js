@@ -1,5 +1,5 @@
 import React from "react";
-import { connect, Connect } from "react-redux";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 class LandingPage extends React.Component {
