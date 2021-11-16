@@ -52,3 +52,24 @@ router.post('/:userId/add', async (req, res, next) => {
     console.log(e)
   }
 })
+
+router.delete('/:userId/remove', async (req, res, next) => {
+
+  const productToRemove = await Cart.findOne( { 
+    where: {
+      productId: req.body.productId,
+      userId: req.params.userId
+  }});
+  
+  if (productToRemove.quantity > 1){
+    
+    productToRemove.quantity -- ;
+    await productToRemove.save();
+    
+  } else {
+    
+    await productToRemove.destroy()
+  }
+  
+  res.status(200).end();
+})
