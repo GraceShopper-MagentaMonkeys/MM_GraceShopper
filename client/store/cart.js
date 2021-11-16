@@ -25,6 +25,7 @@ export const getSelectedProducts = userId => {
 export const addToCart = (productId, userId) => {
     return async dispatch => {
         try{
+            // JOE_CR: This feels like a kind of random URL to be a "cart add".
             await axios.post(`/api/allproducts/${productId}/add`, { userId: userId });
             dispatch(getSelectedProducts(userId));
         } catch (e){
