@@ -15,8 +15,10 @@ router.post('/login', async (req, res, next) => {
 router.post('/signup', async (req, res, next) => {
   try {
     const { username , password, email, imageUrl } = req.body
-    // preventing injection attacks.
-    const user = await User.create({ username, password, email, imageUrl })
+    if (imageUrl === '') {
+      delete req.body.imageUrl
+    }
+    const user = await User.create({ username, password, email})
     res.send({token: await user.generateToken()})
 
   } catch (err) {
