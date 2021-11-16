@@ -27,36 +27,50 @@ router.get('/:productId', async (req, res, next) => {
   }
 });
 
+//products of a single category /api/allproducts/sort/:productCategory
+router.get('/sort/:productCategory', async (req, res, next) => {
+  try {
+    const productsCategory = await Product.findAll({
+      where : {
+        category: req.params.productCategory
+      }
+    })
+    res.send(productsCategory)
+  } catch (e) {
+    next(e)
+  }
+})
+
 router.post('/:productId/add', async (req, res, next)=> {
   try{
-    
-    const product = await Product.findByPk(req.params.productId); 
-    const user = await User.findByPk(req.body.userId); 
+
+    const product = await Product.findByPk(req.params.productId);
+    const user = await User.findByPk(req.body.userId);
     let usersProducts = await user.getProducts();
     usersProducts = usersProducts.map(ele => ele.dataValues.id);
-   
+
     if(usersProducts.includes(product.id)){
-      const cartItem = await Cart.findOne({ 
+      const cartItem = await Cart.findOne({
         where: {
           productId: product.id,
           userId: user.id
-      }}); 
+      }});
       let qty = cartItem.quantity ;
       qty ++
-      await Cart.update({ quantity: qty }, 
+      await Cart.update({ quantity: qty },
         { where: {
           productId: product.id,
           userId: user.id
         }})
-      
+
     } else {
-      
+
       await user.addProduct(product);
-      
+
     }
       res.status(200).end();
-    
-    
+
+
   } catch (e){
     console.log(e);
   }

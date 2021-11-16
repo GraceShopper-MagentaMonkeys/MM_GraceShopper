@@ -7,6 +7,7 @@ const SET_PRODUCTS = "SET_PRODUCTS";
 const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 const DELETE_PRODUCT = "DELETE_PRODUCT";
 const CREATE_PRODUCT = "CREATE_PRODUCT";
+const GET_PRODUCT_CATEGORY = 'GET_PRODUCT_CATEGORY'
 
 /**
  * ACTION CREATORS
@@ -39,6 +40,13 @@ const _createProduct = (product) => {
   };
 };
 
+const _getProductCategory = (productCategory) => {
+  return {
+    type: GET_PRODUCT_CATEGORY,
+    productCategoryArray: productCategory
+  }
+}
+
 /**
  * THUNK CREATORS
  */
@@ -47,13 +55,24 @@ export const fetchProducts = () => {
     try {
       const response = await axios.get("/api/allproducts");
       const products = response.data;
-
       dispatch(setProducts(products));
     } catch (error) {
       console.log("Sorry not able to fetch any products", error);
     }
   };
 };
+
+export const getProductCategory = (productCategory) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`/api/allproducts/sort/${productCategory}`);
+      const productsOfCategory = response.data;
+      dispatch(_getProductCategory(productsOfCategory))
+    } catch(error) {
+      console.error(error)
+    }
+  }
+}
 
 export const updateProduct = (product, history) => {
   return async (dispatch) => {
@@ -101,6 +120,8 @@ export default function productsReducer(state = [], action) {
       );
     case DELETE_PRODUCT:
       return state.filter((product) => product.id !== action.product.id);
+    case GET_PRODUCT_CATEGORY:
+      return action.productCategoryArray
     default:
       return state;
   }
