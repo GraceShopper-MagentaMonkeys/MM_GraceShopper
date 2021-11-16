@@ -9,6 +9,7 @@ const Cart = require('./models/Cart');
 //associations could go here!
 User.belongsToMany(Product, { through: Cart });
 Product.belongsToMany(User, { through: Cart });
+// JOE_CR: What is the plan for modeling completed orders?
 
 module.exports = {
   db,
