@@ -41,40 +41,40 @@ router.get('/sort/:productCategory', async (req, res, next) => {
   }
 })
 
-router.post('/:productId/add', async (req, res, next)=> {
-  try{
+// router.post('/:productId/add', async (req, res, next)=> {
+//   try{
 
-    const product = await Product.findByPk(req.params.productId);
-    const user = await User.findByPk(req.body.userId);
-    let usersProducts = await user.getProducts();
-    usersProducts = usersProducts.map(ele => ele.dataValues.id);
+//     const product = await Product.findByPk(req.params.productId);
+//     const user = await User.findByPk(req.body.userId);
+//     let usersProducts = await user.getProducts();
+//     usersProducts = usersProducts.map(ele => ele.dataValues.id);
 
-    if(usersProducts.includes(product.id)){
-      const cartItem = await Cart.findOne({
-        where: {
-          productId: product.id,
-          userId: user.id
-      }});
-      let qty = cartItem.quantity ;
-      qty ++
-      await Cart.update({ quantity: qty },
-        { where: {
-          productId: product.id,
-          userId: user.id
-        }})
+//     if(usersProducts.includes(product.id)){
+//       const cartItem = await Cart.findOne({
+//         where: {
+//           productId: product.id,
+//           userId: user.id
+//       }});
+//       let qty = cartItem.quantity ;
+//       qty ++
+//       await Cart.update({ quantity: qty },
+//         { where: {
+//           productId: product.id,
+//           userId: user.id
+//         }})
 
-    } else {
+//     } else {
 
-      await user.addProduct(product);
+//       await user.addProduct(product);
 
-    }
-      res.status(200).end();
+//     }
+//       res.status(200).end();
 
 
-  } catch (e){
-    console.log(e);
-  }
-})
+//   } catch (e){
+//     console.log(e);
+//   }
+// })
 //udpate a product for admin
 router.put('/:productId/edit', async (req, res, next) => {
 
