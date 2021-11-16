@@ -24,10 +24,26 @@ export const getSelectedProducts = userId => {
 export const addToCart = (productId, userId) => {
     return async dispatch => {
         try{
-            await axios.post(`/api/allproducts/${productId}/add`, { userId: userId });
+            await axios.post(`/api/cart/${userId}/add`, { productId: productId });
             dispatch(getSelectedProducts(userId));
         } catch (e){
             console.log('Could not add to cart database', e)
+        }
+    }
+}
+
+export const removeFromCart = (productId, userId, method) => {
+    return async dispatch => {
+        try {
+            if( method === 'decrease'){
+                await axios.put(`/api/cart/${userId}/decrease`, { productId: productId });
+                dispatch(getSelectedProducts(userId));
+            } else if( method === 'remove' ){
+                await axios.put(`/api/cart/${userId}/remove`, { productId: productId });
+                dispatch(getSelectedProducts(userId));
+            }
+        } catch (e){
+            console.log(e)
         }
     }
 }
