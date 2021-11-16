@@ -25,7 +25,7 @@ class LandingPage extends React.Component {
                 />
               </Link>
 
-              <Link to="allproducts/sort/style">
+              <Link to="/allproducts/sort/style">
                 <h4>Style</h4>
                 <img
                   className="categoryImage"
@@ -33,7 +33,7 @@ class LandingPage extends React.Component {
                 ></img>
               </Link>
 
-              <Link to="allproducts/sort/food-drink">
+              <Link to="/allproducts/sort/food-drink">
                 <h4>Food & Drink </h4>
                 <img
                   className="categoryImage"
