@@ -7,7 +7,11 @@ const requireToken = async (req, res, next) => {
     const token = req.headers.authorization;
     const user = await User.findByToken(token);
     req.user = user;
-    next()
+    if (!token || !user) {
+      res.status(401).send('SORRY')
+    } else {
+      next()
+    }
   } catch (error) {
     next(error);
   }
@@ -16,7 +20,7 @@ const requireToken = async (req, res, next) => {
 
 // checking if user is Admin
 const isAdmin = (req, res, next) => {
-  if (!req.body.auth.isAdmin) {
+  if (!req.user.isAdmin) {
     res.status(403).send('You do not have the access!!!')
   } else {
     next()

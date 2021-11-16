@@ -1,7 +1,7 @@
 const router = require("express").Router();
 // const { unstable_renderSubtreeIntoContainer } = require('react-dom');
 const { models: { Product, Cart, User  } } = require("../db");
-const { isAdmin } = require("./gateKeepingMiddleware");
+const { isAdmin, requireToken } = require("./gateKeepingMiddleware");
 
 module.exports = router;
 
@@ -43,7 +43,6 @@ router.get('/sort/:productCategory', async (req, res, next) => {
 
 router.post('/:productId/add', async (req, res, next)=> {
   try{
-
     const product = await Product.findByPk(req.params.productId);
     const user = await User.findByPk(req.body.userId);
     let usersProducts = await user.getProducts();
@@ -56,7 +55,7 @@ router.post('/:productId/add', async (req, res, next)=> {
           userId: user.id
       }});
       let qty = cartItem.quantity ;
-      qty ++
+      qty++
       await Cart.update({ quantity: qty },
         { where: {
           productId: product.id,
@@ -75,9 +74,9 @@ router.post('/:productId/add', async (req, res, next)=> {
     console.log(e);
   }
 })
-//udpate a product for admin
-router.put('/:productId/edit', async (req, res, next) => {
 
+//udpate a product for admin
+router.put('/:productId/edit', requireToken, isAdmin, async (req, res, next) => {
   try {
     const singleProduct = await Product.findByPk(req.params.productId);
     res.send(await singleProduct.update(req.body));
@@ -87,7 +86,7 @@ router.put('/:productId/edit', async (req, res, next) => {
 });
 
 //remove a product for admin
-router.delete('/:productId/edit',async (req, res, next) => {
+router.delete('/:productId/edit', requireToken,isAdmin, async (req, res, next) => {
   try {
     const singleProject = await Product.findByPk(req.params.productId);
     await singleProject.destroy();
