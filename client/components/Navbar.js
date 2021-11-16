@@ -7,7 +7,7 @@ import SingleProduct from './SingleProduct';
 
 
 
-const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin }) => (
+const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin, state }) => (
 
   <div className="navBarHeader">
     <img src= 'https://scontent-lga3-1.xx.fbcdn.net/v/t1.6435-9/61384177_2072231662906442_4883924899896229888_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=973b4a&_nc_ohc=rQyaG6tLslkAX-eh64z&_nc_ht=scontent-lga3-1.xx&oh=d826cde22379d813a987d54ea9096343&oe=61B87141' className='logo'/>
@@ -30,7 +30,7 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin }) => (
             <Link to={'/admin'}> All Users </Link>
             </div>
           ) : ('')}
-          <Link to="/cart/10">Cart</Link>
+          <Link to={`/cart/${userId}`}>Cart</Link>
         </div>
       ) : (
         <div>
@@ -58,7 +58,9 @@ const mapState = (state) => {
 
     userId: state.auth.id,
 
-    isAdmin: state.auth.isAdmin
+    isAdmin: state.auth.isAdmin,
+    
+    state: state
 
   };
 };
