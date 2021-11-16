@@ -15,7 +15,9 @@ class AllUsers extends React.Component {
        { allUsersView.map((user) => {
          return (
           <div className='cont' key={user.id}>
+            {/* JOE_CR: The formatting here is difficult to read. Make sure you are keeping indentations consistent! */}
            <div className='card'>
+             {/* JOE_CR: Establish consistent conventions for your HTML labeling -- this JSX has both camelCase and kebab-case classes/ids. */}
               <img src={user.imageUrl} className='userImage'/>
             <div className='container'>
               <p>Account Created: {user.date}</p>

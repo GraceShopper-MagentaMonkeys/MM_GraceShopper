@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getProductCategory } from "../store/all-products";
 
+// JOE_CR: Does this have to be its own component? Can <AllProducts /> be used directly or changed to have a sort?
 class SortedProducts extends React.Component {
   componentDidMount() {
     this.props.getProductCategory(this.props.match.params.productCategory);

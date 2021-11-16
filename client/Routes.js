@@ -23,6 +23,9 @@ class Routes extends Component {
   render() {
     const { isLoggedIn } = this.props;
 
+    // JOE_CR: Instead of having two branching collections upon the value of isLoggedIn,
+    // you can include or not include certain routes. You have <Redirect> as a tool for URLs
+    // that should lead somewhere else (like "/login" when you're already authenticated).
     return (
       <div>
         {isLoggedIn ? (

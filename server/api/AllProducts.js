@@ -41,6 +41,7 @@ router.get('/sort/:productCategory', async (req, res, next) => {
   }
 })
 
+// JOE_CR: To follow RESTful conventions, this need only be 
 router.post('/:productId/add', async (req, res, next)=> {
   try{
 
@@ -49,6 +50,9 @@ router.post('/:productId/add', async (req, res, next)=> {
     let usersProducts = await user.getProducts();
     usersProducts = usersProducts.map(ele => ele.dataValues.id);
 
+    // JOE_CR: This is great and a good way of going about this create or add split.
+    // However, I would suggest looking into Sequelize model's `findOrCreate` method
+    // and think about how it could be used here instead.
     if(usersProducts.includes(product.id)){
       const cartItem = await Cart.findOne({
         where: {
@@ -57,6 +61,8 @@ router.post('/:productId/add', async (req, res, next)=> {
       }});
       let qty = cartItem.quantity ;
       qty ++
+      // JOE_CR: You're using a bulk update here when you have a reference to the row you want to update
+      // (`cartItem`). I would suggest using the update operation off of that instance instead.
       await Cart.update({ quantity: qty },
         { where: {
           productId: product.id,
@@ -68,6 +74,7 @@ router.post('/:productId/add', async (req, res, next)=> {
       await user.addProduct(product);
 
     }
+    // JOE_CR: Confusing and misleading formatting!
       res.status(200).end();
 
 
@@ -87,6 +94,7 @@ router.put('/:productId/edit', async (req, res, next) => {
 });
 
 //remove a product for admin
+// JOE_CR: It doesn't seem like /edit should be a part of this route's URL.
 router.delete('/:productId/edit',async (req, res, next) => {
   try {
     const singleProject = await Product.findByPk(req.params.productId);

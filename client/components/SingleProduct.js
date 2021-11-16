@@ -34,6 +34,7 @@ class SingleProduct extends React.Component {
             <div className='productNameImage'>
 
             <h1>{product.name}</h1>
+            {/* JOE_CR: Avoid using <br /> tags to create space between your elements. Use CSS dimensionality (margin, padding) or layout (flexbox) instead. */}
             <br />
               <br />
             <img className='singleProductImage' src={product.imageUrl} />

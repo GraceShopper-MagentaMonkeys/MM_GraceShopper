@@ -25,6 +25,7 @@ class Cart extends React.Component {
         
         const productRender = this.props.selectedProducts || []
         
+        // JOE_CR: Nice array method usages!
         const prices = productRender.map( product => {
             const price = parseFloat(product.price);
             const itemTotal = price * product.cart.quantity;

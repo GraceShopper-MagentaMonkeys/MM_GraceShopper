@@ -3,6 +3,7 @@ const {
   models: { Product },
 } = require("../db");
 module.exports = router;
+// JOE_CR: Sad unused isAdmin in another file. :(
 const { isAdmin } = require('./gateKeepingMiddleware')
 
 //create a product for admin
