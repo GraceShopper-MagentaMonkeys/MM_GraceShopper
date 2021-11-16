@@ -10,6 +10,8 @@ import Cart from './components/Cart';
 import EditProduct from './components/EditProduct';
 import allUsers from './components/all-users';
 import CreateProduct from './components/CreateProduct';
+import SortedProducts from './components/SortedProducts';
+
 /**
  * COMPONENT
  */
@@ -35,17 +37,19 @@ class Routes extends Component {
             <Route exact path="/cart/:userId" component={Cart} />
             <Route exact path='/admin' component={allUsers}/>
             <Route exact path='/create' component={CreateProduct} />
+            <Route exact path ='/allproducts/sort/:productCategory' component={SortedProducts} />
           </Switch>
         ) : (
-          
+
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/home" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route exact path="/allproducts" component={AllProducts} />
-            <Route path="/allproducts/:productId" component={SingleProduct} />
+            <Route exact path="/allproducts/:productId" component={SingleProduct} />
             <Route exact path="/cart/:userId" component={Cart} />
+            <Route exact path ='/allproducts/sort/:productCategory' component={SortedProducts} />
           </Switch>
         )}
       </div>
