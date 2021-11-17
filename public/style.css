@@ -289,7 +289,7 @@ h4 {
   border-style: solid;
 }
 
-.categoriersContainer, .singleProductContainer, .cartFlexContainer {
+.categoriersContainer, .singleProductContainer, .cartFlexContainer, .checkoutFlexContainer  {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -312,7 +312,7 @@ h4 {
 
 }
 
-.productNameImage, .cartProductsContainer {
+.productNameImage, .cartProductsContainer, .checkoutItemsList, .checkoutItemsSubtotal {
   border: 3px solid black;
   padding: 30px;
   margin-top: 28px;
@@ -413,5 +413,16 @@ h4 {
 
 .loginForm {
   padding-left: 0px
+}
+
+.checkoutItemsList {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end
+}
+
+.checkoutFlexContainer {
+  flex-direction: column-reverse;
+  align-items: center;
 }
 
