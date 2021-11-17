@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link, Redirect, NavLink } from "react-router-dom";
 import { logout } from "../store";
+import { Login } from "./AuthForm";
 import AllProducts from "./AllProducts";
 import SingleProduct from "./SingleProduct";
 
@@ -41,8 +42,18 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin, state }) => (
             </a>
             {isAdmin ? (
               <div>
-                <Link to={"/create"}> Admins Only: Create A New Product </Link>
-                <Link to={"/admin"}> All Users </Link>
+                <div className="dropdown">
+                  <Link className="dropButton">Administrator Tools</Link>
+                  <div className="dropdownContent">
+                    <Link to="/create">
+                      <h4>Create New Product</h4>
+                    </Link>
+                    <Link to={"/admin"}>
+                      {" "}
+                      <h4>View all Users</h4>{" "}
+                    </Link>
+                  </div>
+                </div>
               </div>
             ) : (
               ""
@@ -70,7 +81,17 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin, state }) => (
             </div>
             <Link to="/cart/guest">Cart</Link>
             <Link to="/signup">Sign Up</Link>
-            <Link to="/login">Login</Link>
+
+            <div className="dropdown">
+              <Link className="dropButton" to="/login">
+                Login
+              </Link>
+              <div className="dropdownContent">
+                <Login />
+              </div>
+            </div>
+
+
           </div>
         )}
       </div>

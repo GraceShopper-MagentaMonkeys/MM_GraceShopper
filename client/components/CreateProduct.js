@@ -6,12 +6,12 @@ class CreateProduct extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
+      name: '"Cashmere Sweater"',
       price: 1,
-      description: '',
+      description: '"Very warm."',
       quantity: 1,
-      imageUrl: '',
-      category: '',
+      imageUrl: 'imageUrl goes here!',
+      category: 'home, style, or food/dink',
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,6 +34,7 @@ class CreateProduct extends React.Component {
       this.state;
     const { handleSubmit, handleChange } = this;
     return (
+      <div className='createProductContainer'>
         <form id="product-create-form" onSubmit={handleSubmit}>
           <label htmlFor="name">Product Name</label>
           <input
@@ -85,6 +86,7 @@ class CreateProduct extends React.Component {
 
           <button type="submit">Create this product!</button>
         </form>
+        </div>
     );
   }
 }
