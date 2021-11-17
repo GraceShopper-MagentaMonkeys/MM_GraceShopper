@@ -19,7 +19,7 @@ class Checkout extends React.Component {
   }
 
   render() {
-    console.log('HERE', this.props);
+    
     return (
       <div>
         <h1>Checkout</h1>
@@ -33,7 +33,7 @@ class Checkout extends React.Component {
           </div>
         ))}
         <div>
-          <h2>Subtotal: $ {this.props.match.params.cartTotal}</h2>
+          <h2>Subtotal: $ {this.props.location.params.cartTotal !== {} ? this.props.location.params.cartTotal : '0' }</h2>
           <Link to={'/confirmation'}>
             <button onClick={this.handleClick}>Place Order</button>
           </Link>
