@@ -10,7 +10,7 @@ class LandingPage extends React.Component {
           <div className="landingMainBg">
             <h1> We are a modern lifestyle brand, for the modern man. </h1>
             <h3>Luxury, just for you. </h3>
-            <h4> Goop, but for men. </h4>
+            <h4> Goop... but for men. </h4>
             <div className="homeButtonDiv">
               <Link to="/allproducts">
                 <img src="https://www.myss.com/wp-content/uploads/2020/11/Shop-Now.png" />
