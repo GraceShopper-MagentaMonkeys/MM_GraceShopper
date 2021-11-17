@@ -1,21 +1,33 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchProducts, deleteProduct, getProductCategory } from "../store/all-products";
+import {
+  fetchProducts,
+  deleteProduct,
+  getProductCategory,
+} from "../store/all-products";
 
 class AllProducts extends React.Component {
   componentDidMount() {
-
-    (this.props.match.params.productCategory)
-    ?
-    (this.props.getProductCategory(this.props.match.params.productCategory))
-    :
-    this.props.fetchProducts();
-
+    this.props.match.params.productCategory
+      ? this.props.getProductCategory(this.props.match.params.productCategory)
+      : this.props.fetchProducts();
+  }
+  componentDidUpdate(previousProps) {
+    if (
+      previousProps.match.params.productCategory !==
+      this.props.match.params.productCategory
+    )
+      this.setState({
+        products: this.props.getProductCategory(
+          this.props.match.params.productCategory
+        ),
+      });
   }
 
   render() {
     const { products, isAdmin } = this.props;
+    console.log(this.props.match.params.productCategory);
     return (
       <div className="products-container">
         {products.map((product, index) => {
@@ -63,7 +75,8 @@ const mapDispatch = (dispatch, { history }) => {
   return {
     fetchProducts: () => dispatch(fetchProducts()),
     deleteProduct: (productId) => dispatch(deleteProduct(productId, history)),
-    getProductCategory: (productCategory) => dispatch(getProductCategory(productCategory))
+    getProductCategory: (productCategory) =>
+      dispatch(getProductCategory(productCategory)),
   };
 };
 

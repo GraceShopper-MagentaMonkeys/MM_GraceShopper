@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect, NavLink } from "react-router-dom";
 import { logout } from "../store";
 import AllProducts from "./AllProducts";
 import SingleProduct from "./SingleProduct";
@@ -39,14 +39,14 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin, state }) => (
             <a href="#" onClick={handleClick}>
               Logout
             </a>
-
             {isAdmin ? (
-            <div>
-            <Link to={'/create'}> Admins Only: Create A New Product </Link>
-            <Link to={'/admin'}> All Users </Link>
-            </div>
-          ) : ('')}
-
+              <div>
+                <Link to={"/create"}> Admins Only: Create A New Product </Link>
+                <Link to={"/admin"}> All Users </Link>
+              </div>
+            ) : (
+              ""
+            )}
             <Link to={`/cart/${userId}`}>Cart</Link>
           </div>
         ) : (
@@ -60,11 +60,9 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin, state }) => (
                 <Link to="/allproducts/sort/home">
                   <h4>Home</h4>
                 </Link>
-
                 <Link to="/allproducts/sort/style">
                   <h4>Style</h4>
                 </Link>
-
                 <Link to="/allproducts/sort/food-drink">
                   <h4>Food & Drink </h4>
                 </Link>
