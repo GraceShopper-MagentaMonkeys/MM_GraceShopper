@@ -1,13 +1,13 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { authenticate } from '../store';
+import React from "react";
+import { connect } from "react-redux";
+import { authenticate } from "../store";
 
 /**
  * COMPONENT
  */
 const AuthForm = (props) => {
   const { name, displayName, handleSubmit, error } = props;
-  
+
   return (
     <div className="loginForm">
       <form className="innerForm" onSubmit={handleSubmit} name={name}>
@@ -33,32 +33,34 @@ const AuthForm = (props) => {
             type="password"
           />
         </div>
-        {name === 'signup' ? (
-        <span>
-          <div>
-          <label htmlFor="email">
-            <small></small>
-          </label>
-          <input
-            className="passwordField"
-            placeholder="Insert email"
-            name="email"
-            type="email"
-          />
-        </div>
-          <div>
-          <label htmlFor="imageUrl">
-            <small>Insert Image:</small>
-          </label>
-          <input
-            className="passwordField"
-            placeholder="Insert image URL"
-            name="imageUrl"
-            type="imageUrl"
-          />
-          </div>
-        </span>
-        ) : ''}
+        {name === "signup" ? (
+          <span>
+            <div>
+              <label htmlFor="email">
+                <small></small>
+              </label>
+              <input
+                className="passwordField"
+                placeholder="Insert email"
+                name="email"
+                type="email"
+              />
+            </div>
+            <div>
+              <label htmlFor="imageUrl">
+                <small>Insert Image:</small>
+              </label>
+              <input
+                className="passwordField"
+                placeholder="Insert image URL"
+                name="imageUrl"
+                type="imageUrl"
+              />
+            </div>
+          </span>
+        ) : (
+          ""
+        )}
         <div>
           <button className="loginButton" type="submit">
             {displayName}
@@ -79,16 +81,16 @@ const AuthForm = (props) => {
  */
 const mapLogin = (state) => {
   return {
-    name: 'login',
-    displayName: 'Login',
+    name: "login",
+    displayName: "Login",
     error: state.auth.error,
   };
 };
 
 const mapSignup = (state) => {
   return {
-    name: 'signup',
-    displayName: 'Sign Up',
+    name: "signup",
+    displayName: "Sign Up",
     error: state.auth.error,
   };
 };
@@ -97,11 +99,11 @@ const mapDispatch = (dispatch) => {
   return {
     handleSubmit(evt) {
       evt.preventDefault();
-      if (evt.target.name === 'login') {
+      if (evt.target.name === "login") {
         const formName = evt.target.name;
         const username = evt.target.username.value;
         const password = evt.target.password.value;
-        dispatch(authenticate(username, password, formName))
+        dispatch(authenticate(username, password, formName));
       } else {
         const formName = evt.target.name;
         const username = evt.target.username.value;

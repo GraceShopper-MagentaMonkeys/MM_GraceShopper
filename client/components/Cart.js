@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getSelectedProducts, addToCart, removeFromCart } from '../store/cart';
 import { Link } from 'react-router-dom';
 
+
 class Cart extends React.Component {
   constructor() {
     super();
@@ -20,6 +21,7 @@ class Cart extends React.Component {
   handleClick(event, productId) {
     const userId = this.props.userId;
     console.log(productId);
+
     if (event.target.name === 'add') {
       this.props.addToCart(productId, userId);
     } else if (event.target.name === 'minus') {
@@ -44,42 +46,53 @@ class Cart extends React.Component {
     }, 0);
 
     return (
-      <div>
+
+      <div className="cartFlexContainer">
         {this.props.isLoggedIn ? (
-          <div>
-            <h1>Your Items</h1>
-            {productRender.map((product) => (
-              <div key={product.id + this.props.userId}>
-                <img className="imageHolder" src={product.imageUrl} />
-                <h4>
-                  {product.name} $ {product.price}
-                </h4>
-                <h4>Quantity: {product.cart.quantity}</h4>
-                <button
-                  name="add"
-                  onClick={(e) => this.handleClick(e, product.id)}>
-                  +
-                </button>
-                <button
-                  name="minus"
-                  onClick={(e) => this.handleClick(e, product.id)}>
-                  -
-                </button>
-                <button
-                  name="remove"
-                  onClick={(e) => this.handleClick(e, product.id)}>
-                  Remove
-                </button>
-              </div>
-            ))}
-            <div>
-              <h2>Subtotal: $ {total}</h2>
+          <>
+            <div className="cartProductsContainer">
+              <h1>Your Items</h1>
+              {productRender.map((product) => (
+                <div
+                  key={product.id + this.props.userId}
+                  className="singleCartProduct"
+                >
+                  <img className="imageHolder" src={product.imageUrl} />
+                  <div className="cartProductDetails">
+                    <h4>
+                      {product.name} - ${product.price}
+                    </h4>
+                    <h4>Quantity: {product.cart.quantity}</h4>
+                    <button
+                      name="add"
+                      onClick={(e) => this.handleClick(e, product.id)}
+                    >
+                      +
+                    </button>
+                    <button
+                      name="minus"
+                      onClick={(e) => this.handleClick(e, product.id)}
+                    >
+                      -
+                    </button>
+                    <button
+                      name="remove"
+                      onClick={(e) => this.handleClick(e, product.id)}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="totalContainer">
+              <h2>Subtotal: ${total}</h2>
               <Link
                 to={{ pathname: '/checkout', params: { cartTotal: total } }}>
                 <button>Checkout</button>
               </Link>
             </div>
-          </div>
+          </>
         ) : (
           <h1>Sorry, you must login to use the cart. Feature coming soon!</h1>
         )}

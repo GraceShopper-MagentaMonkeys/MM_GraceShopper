@@ -11,6 +11,7 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit
 }
 
 label {
@@ -21,7 +22,7 @@ nav a {
   display: inline-block;
   margin: 1em;
   color: white;
-  /* font-family: 'Playfair Display', serif; */
+   /* font-family: 'Playfair Display', serif;  */
   font-size: 150%;
 }
 nav a:hover {
@@ -84,6 +85,7 @@ h4 {
  justify-content: left;
  margin: 25px;
  border-radius: 30px;
+ text-align: left;
 }
 
 .homeImages {
@@ -141,21 +143,21 @@ h4 {
 }
 .usernameField {
   display: block;
-  width: 200px;
+  width: 160px;
   height: 30px;
   font-size: 15px;
   border: 1px solid black;
 }
 .passwordField {
   display: block;
-  width: 200px;
+  width: 160px;
   height: 30px;
   font-size: 15px;
   border: 1px solid black;
 }
 .loginButton {
   display: block;
-  width: 200px;
+  width: 160px;
   height: 30px;
   font-size: 15px;
   background-color: black;
@@ -236,14 +238,10 @@ h4 {
   margin-left:20px
 }
 
-
- /* h1, h2, h3, h4, h5, h6, {
-
- } */
-
  .welcomeText {
-  font-family: 'Crimson Text', serif;
-  font-size: xx-large
+  /* font-family: 'Crimson Text', serif; */
+  font-size: xx-large;
+  text-align: center;
  }
 
  /* .landingPage {
@@ -291,7 +289,7 @@ h4 {
   border-style: solid;
 }
 
-.categoriersContainer, .singleProductContainer {
+.categoriersContainer, .singleProductContainer, .cartFlexContainer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -300,7 +298,7 @@ h4 {
 
 }
 
-.productDetails{
+.productDetails, .totalContainer{
   padding-top: 30px;
   border: 3px solid black;
   padding: 30px;
@@ -314,7 +312,7 @@ h4 {
 
 }
 
-.productNameImage {
+.productNameImage, .cartProductsContainer {
   border: 3px solid black;
   padding: 30px;
   margin-top: 28px;
@@ -367,4 +365,53 @@ h4 {
 .dropdown:hover .dropdownContent {display: block;}
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+.createProductContainer, .edit-product-container, .loginForm {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid black;
+  border-radius: 15px;
+  align-items: center;
+  margin: 25px;
+  padding: 20px;
+  padding-left: 120px;
+  font-size: 24px;
+}
+
+ .create-product-input, .edit-product-input{
+  height: 40px;
+  width: 400px;
+  margin: 10px;
+  font-size: 20px;
+  font-style: italic;
+  background-color: rgb(228, 224, 224);
+}
+
+.imageHolder {
+  height:min-content;
+  margin-bottom: 10px;
+}
+
+.singleCartProduct {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* margin: 20px; */
+  justify-content: space-between;
+  border-bottom:1px solid black;
+  margin-bottom: 15px
+}
+
+.cartProductDetails {
+  font-size: 24px;
+  margin-left: 20px;
+  text-align: right
+}
+ .cartProductsContainer {
+   text-align: left
+ }
+
+.loginForm {
+  padding-left: 0px
+}
 

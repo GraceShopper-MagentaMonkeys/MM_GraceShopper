@@ -10,7 +10,7 @@ export const Home = (props) => {
 
   return (
     <div className='welcome'>
-      <h3>Welcome, {username}</h3>
+      <h3 className='welcomeText'>Welcome, {username}</h3>
       <LandingPage />
     </div>
   );
