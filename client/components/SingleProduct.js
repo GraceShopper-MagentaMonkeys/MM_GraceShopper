@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchSingleProduct } from "../store/single-product";
-import { addToCart } from "../store/cart";
+import { addToCart, getSelectedProducts } from "../store/cart";
 
 class SingleProduct extends React.Component {
   constructor() {
@@ -17,24 +17,9 @@ class SingleProduct extends React.Component {
 
   handleClick(event, productId) {
     const userId = this.props.userId;
-    if (event.target.name === "add") {
-      
-      const userId = this.props.userId;
-        
-      const product = this.props.selectedProducts.filter(product => {
-        if (product.id === productId){
-          return product
-        }
-        
-      })
-      
-      if (product[0].cart.quantity + 1 > product[0].quantity){
-        return window.alert('Error 418: I am a teapot, also we dont have that much');
-      }
-      
-      this.props.addToCart(productId, userId);
-      window.alert("Thank You! Your cart has been updated!");
-    }
+    
+        this.props.addToCart(productId, userId);
+        window.alert("Thank You! Your cart has been updated!");
   }
 
   render() {
@@ -91,7 +76,6 @@ const mapState = (state) => {
     product: state.singleProductReducer,
     isAdmin: state.auth.isAdmin,
     userId: state.auth.id,
-    selectedProducts: state.cartReducer
   };
 };
 
