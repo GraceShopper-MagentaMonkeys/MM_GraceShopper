@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link, Redirect, NavLink } from "react-router-dom";
 import { logout } from "../store";
 import { Login } from "./AuthForm";
+import Cart from "./Cart.js";
 import AllProducts from "./AllProducts";
 import SingleProduct from "./SingleProduct";
 
@@ -58,7 +59,16 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin, state }) => (
             ) : (
               ""
             )}
-            <Link to={`/cart/${userId}`}>Cart</Link>
+            {/* <Link to={`/cart/${userId}`}>Cart</Link> */}
+
+            <div className="dropdown">
+              <Link className="dropButton" to={`/cart/${userId}`}>
+                Cart
+              </Link>
+              <div className="dropdownContent">
+                <Cart />
+              </div>
+            </div>
           </div>
         ) : (
           <div>
@@ -79,7 +89,7 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin, state }) => (
                 </Link>
               </div>
             </div>
-            <Link to="/cart/guest">Cart</Link>
+
             <Link to="/signup">Sign Up</Link>
 
             <div className="dropdown">
@@ -90,8 +100,7 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin, state }) => (
                 <Login />
               </div>
             </div>
-
-
+            <Link to="/cart/guest">Cart</Link>
           </div>
         )}
       </div>
