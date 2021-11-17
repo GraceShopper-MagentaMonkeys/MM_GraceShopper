@@ -1,15 +1,23 @@
-import React from "react";
-import { connect } from "react-redux";
-import { getSelectedProducts } from "../store/cart";
-import { Link } from "react-router-dom";
+
+import React from 'react';
+import { connect } from 'react-redux';
+import { getSelectedProducts, checkout } from '../store/cart';
+import { Link } from 'react-router-dom';
+
 
 class Checkout extends React.Component {
   constructor(props) {
     super(props);
+    
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchSelectedProducts(this.props.userId);
+  }
+  
+  handleClick(){
+    this.props.checkoutUser(this.props.userId)
   }
 
   render() {
@@ -30,8 +38,8 @@ class Checkout extends React.Component {
 
         <div className="checkoutItemsSubtotal">
           <h2>Subtotal: $ {this.props.match.params.cartTotal}</h2>
-          <Link to={"/confirmation"}>
-            <button>Place Order</button>
+          <Link to={'/confirmation'}>
+            <button onClick={this.handleClick}>Place Order</button>
           </Link>
         </div>
       </div>
@@ -50,6 +58,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchSelectedProducts: (userId) => dispatch(getSelectedProducts(userId)),
+    checkoutUser: (userId) => dispatch(checkout(userId))
   };
 };
 
