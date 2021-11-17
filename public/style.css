@@ -289,7 +289,7 @@ h4 {
   border-style: solid;
 }
 
-.categoriersContainer, .singleProductContainer, .cartFlexContainer {
+.categoriersContainer, .singleProductContainer, .cartFlexContainer, .checkoutFlexContainer  {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -312,7 +312,7 @@ h4 {
 
 }
 
-.productNameImage, .cartProductsContainer {
+.productNameImage, .cartProductsContainer, .checkoutItemsList, .checkoutItemsSubtotal {
   border: 3px solid black;
   padding: 30px;
   margin-top: 28px;
@@ -351,6 +351,9 @@ h4 {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  max-height:500px;
+  overflow-x:hidden;
+  overflow-y:auto;
 }
 
 .dropdownContent a {
@@ -366,7 +369,7 @@ h4 {
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
-.createProductContainer, .edit-product-container, .loginForm {
+.createProductContainer, .edit-product-container, .loginForm, .confirmationContainer {
   display: flex;
   flex-direction: column;
   border: 5px solid black;
@@ -413,5 +416,21 @@ h4 {
 
 .loginForm {
   padding-left: 0px
+}
+
+.checkoutItemsList {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+
+}
+
+.checkoutFlexContainer {
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.checkoutProductSingle {
+  margin: 15px
 }
 

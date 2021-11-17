@@ -22,7 +22,7 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin, state }) => (
             <Link to="/home">Home</Link>
             <div className="dropdown">
               <Link className="dropButton" to="/allproducts">
-                All Products
+                Shop
               </Link>
               <div className="dropdownContent">
                 <Link to="/allproducts/sort/home">
@@ -35,6 +35,10 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin, state }) => (
 
                 <Link to="/allproducts/sort/food-drink">
                   <h4>Food & Drink </h4>
+                </Link>
+
+                <Link to="/allproducts">
+                  <h4>View All</h4>
                 </Link>
               </div>
             </div>
@@ -59,8 +63,6 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin, state }) => (
             ) : (
               ""
             )}
-            {/* <Link to={`/cart/${userId}`}>Cart</Link> */}
-
             <div className="dropdown">
               <Link className="dropButton" to={`/cart/${userId}`}>
                 Cart
@@ -75,17 +77,23 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin, state }) => (
             <Link to="/home">Home</Link>
             <div className="dropdown">
               <Link className="dropButton" to="/allproducts">
-                All Products
+                Shop
               </Link>
               <div className="dropdownContent">
                 <Link to="/allproducts/sort/home">
                   <h4>Home</h4>
                 </Link>
+
                 <Link to="/allproducts/sort/style">
                   <h4>Style</h4>
                 </Link>
+
                 <Link to="/allproducts/sort/food-drink">
                   <h4>Food & Drink </h4>
+                </Link>
+
+                <Link to="/allproducts">
+                  <h4>View All</h4>
                 </Link>
               </div>
             </div>

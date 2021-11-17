@@ -41,15 +41,15 @@ class AllProducts extends React.Component {
               <div>
                 {isAdmin ? (
                   <>
-                    <Link to={`/allproducts/${product.id}/edit`}>
+                    {/* <Link to={`/allproducts/${product.id}/edit`}>
                       <button>Edit Product </button>
-                    </Link>
+                    </Link> */}
                     <button
                       className="remove"
                       onClick={() => this.props.deleteProduct(product.id)}
                       type="button"
                     >
-                      X Delete This Product X
+                      Remove This Product
                     </button>
                   </>
                 ) : (
