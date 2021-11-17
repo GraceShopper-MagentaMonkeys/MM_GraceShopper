@@ -366,7 +366,7 @@ h4 {
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
-.createProductContainer, .edit-product-container, .loginForm {
+.createProductContainer, .edit-product-container, .loginForm, .confirmationContainer {
   display: flex;
   flex-direction: column;
   border: 5px solid black;
@@ -418,11 +418,16 @@ h4 {
 .checkoutItemsList {
   display: flex;
   flex-direction: row;
-  align-items: flex-end
+  align-items: flex-end;
+
 }
 
 .checkoutFlexContainer {
   flex-direction: column-reverse;
   align-items: center;
+}
+
+.checkoutProductSingle {
+  margin: 15px
 }
 

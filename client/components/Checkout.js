@@ -16,21 +16,19 @@ class Checkout extends React.Component {
     console.log("HERE", this.props);
     return (
       <div className="checkoutFlexContainer">
-<h1>Purchase the items above?</h1>
+        <h1>Purchase the items above?</h1>
         <div className="checkoutItemsList">
-
           {this.props.selectedProducts.map((product) => (
-            <div key={product.id}>
+            <div key={product.id} className="checkoutProductSingle">
               <img className="imageHolder" src={product.imageUrl} />
-              <h4>
-                {product.name} $ {product.price}
-              </h4>
+              <h4>{product.name}</h4>
+              <h4> ${product.price} </h4>
               <h4>Quantity: {product.cart.quantity}</h4>
             </div>
           ))}
         </div>
 
-        <div className='checkoutItemsSubtotal'>
+        <div className="checkoutItemsSubtotal">
           <h2>Subtotal: $ {this.props.match.params.cartTotal}</h2>
           <Link to={"/confirmation"}>
             <button>Place Order</button>
