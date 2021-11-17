@@ -43,9 +43,6 @@ class SingleProduct extends React.Component {
               <label htmlFor="quantity">
                 <h3>Quantity ({product.quantity}):</h3>
               </label>
-              <div>
-                <input type="number" min="0" max={`${product.quantity}`} />
-              </div>
               <h3>Price: ${product.price}</h3>
               <div>
                 <button
