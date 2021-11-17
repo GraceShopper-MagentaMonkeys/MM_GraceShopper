@@ -20,9 +20,20 @@ class Cart extends React.Component {
 
   handleClick(event, productId) {
     const userId = this.props.userId;
-    console.log(productId);
 
     if (event.target.name === 'add') {
+      
+      const product = this.props.selectedProducts.filter(product => {
+        if (product.id === productId){
+          return product
+        }
+        
+      })
+      
+      if (product[0].cart.quantity + 1 > product[0].quantity){
+        return window.alert('Error 418: I am a teapot, also we dont have that much');
+      }
+      
       this.props.addToCart(productId, userId);
     } else if (event.target.name === 'minus') {
       this.props.removeFromCart(productId, userId, 'decrease');
@@ -30,6 +41,7 @@ class Cart extends React.Component {
       this.props.removeFromCart(productId, userId, 'remove');
     }
   }
+  
 
   render() {
     const productRender = this.props.selectedProducts;
@@ -44,7 +56,7 @@ class Cart extends React.Component {
       acc += ele;
       return acc;
     }, 0);
-
+    
     return (
 
       <div className="cartFlexContainer">

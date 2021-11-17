@@ -18,6 +18,20 @@ class SingleProduct extends React.Component {
   handleClick(event, productId) {
     const userId = this.props.userId;
     if (event.target.name === "add") {
+      
+      const userId = this.props.userId;
+        
+      const product = this.props.selectedProducts.filter(product => {
+        if (product.id === productId){
+          return product
+        }
+        
+      })
+      
+      if (product[0].cart.quantity + 1 > product[0].quantity){
+        return window.alert('Error 418: I am a teapot, also we dont have that much');
+      }
+      
       this.props.addToCart(productId, userId);
       window.alert("Thank You! Your cart has been updated!");
     }
@@ -80,6 +94,7 @@ const mapState = (state) => {
     product: state.singleProductReducer,
     isAdmin: state.auth.isAdmin,
     userId: state.auth.id,
+    selectedProducts: state.cartReducer
   };
 };
 
