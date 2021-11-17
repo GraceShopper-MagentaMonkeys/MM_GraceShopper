@@ -48,6 +48,26 @@ export const removeFromCart = (productId, userId, method) => {
     }
 }
 
+export const checkout = userId => {
+    return async dispatch => {
+        // put request and delete request have different paramater orders for headers
+        const token = window.localStorage.getItem('token');
+        console.log(token);
+        try {
+            console.log('thunk fired')
+            await axios.put('/api/checkout', userId, {
+                headers: {
+                    authorization: token
+                }
+            })
+            dispatch(getSelectedProducts(userId));
+            
+        } catch (e){
+            console.log(e)
+        }
+    }
+}
+
 const initialState = [];
 
 export default function cartReducer (state = initialState, action) {
