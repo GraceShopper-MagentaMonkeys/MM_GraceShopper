@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const Confirmation = () => {
   let nums = Math.floor(Math.random() * 2000000000);
   return (
-    <div>
-      <h1>Thank You</h1>
+    <div className='confirmationContainer'>
+      <h1>Thank You!</h1>
       <h4>{`Order confirmation #${nums}`}</h4>
       <Link to={'/allproducts'}>
         <button>Continue Shopping</button>
