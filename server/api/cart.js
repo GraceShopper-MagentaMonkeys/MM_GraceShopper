@@ -54,7 +54,6 @@ router.post('/:userId/add', async (req, res, next) => {
 })
 
 router.put('/:userId/decrease', async (req, res, next) => {
-console.log('route hit');
 console.log('product', req.body);
   try {
   
