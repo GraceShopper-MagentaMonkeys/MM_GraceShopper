@@ -10,7 +10,8 @@ import Cart from './components/Cart';
 import EditProduct from './components/EditProduct';
 import allUsers from './components/all-users';
 import CreateProduct from './components/CreateProduct';
-
+import Checkout from './components/Checkout';
+import Confirmation from './components/Confirmation';
 
 /**
  * COMPONENT
@@ -39,7 +40,7 @@ class Routes extends Component {
             path="/allproducts/:productId/edit"
             component={isAdmin && isLoggedIn ? EditProduct : ''}
           />
-          <Route path="/cart/:userId" component={Cart} />
+          <Route exact path="/cart/:userId" component={Cart} />
           <Route
             path="/admin"
             component={isAdmin && isLoggedIn ? allUsers : ''}
@@ -48,6 +49,11 @@ class Routes extends Component {
           <Route
             path="/allproducts/sort/:productCategory"
             component={AllProducts}
+          />
+          <Route path="/checkout" component={isLoggedIn ? Checkout : ''} />
+          <Route
+            path="/confirmation"
+            component={isLoggedIn ? Confirmation : ''}
           />
         </Switch>
       </div>

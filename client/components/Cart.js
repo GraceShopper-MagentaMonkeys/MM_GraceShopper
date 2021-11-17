@@ -1,6 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import { getSelectedProducts, addToCart, removeFromCart } from "../store/cart";
+import React from 'react';
+import { connect } from 'react-redux';
+import { getSelectedProducts, addToCart, removeFromCart } from '../store/cart';
+import { Link } from 'react-router-dom';
+
 
 class Cart extends React.Component {
   constructor() {
@@ -12,7 +14,6 @@ class Cart extends React.Component {
   componentDidMount() {
     if (this.props.isLoggedIn) {
       const userId = this.props.userId;
-      console.log(userId);
       this.props.fetchSelectedProducts(userId);
     }
   }
@@ -20,12 +21,13 @@ class Cart extends React.Component {
   handleClick(event, productId) {
     const userId = this.props.userId;
     console.log(productId);
-    if (event.target.name === "add") {
+
+    if (event.target.name === 'add') {
       this.props.addToCart(productId, userId);
-    } else if (event.target.name === "minus") {
-      this.props.removeFromCart(productId, userId, "decrease");
-    } else if (event.target.name === "remove") {
-      this.props.removeFromCart(productId, userId, "remove");
+    } else if (event.target.name === 'minus') {
+      this.props.removeFromCart(productId, userId, 'decrease');
+    } else if (event.target.name === 'remove') {
+      this.props.removeFromCart(productId, userId, 'remove');
     }
   }
 
@@ -44,6 +46,7 @@ class Cart extends React.Component {
     }, 0);
 
     return (
+
       <div className="cartFlexContainer">
         {this.props.isLoggedIn ? (
           <>
@@ -84,6 +87,10 @@ class Cart extends React.Component {
             </div>
             <div className="totalContainer">
               <h2>Subtotal: ${total}</h2>
+              <Link
+                to={{ pathname: '/checkout', params: { cartTotal: total } }}>
+                <button>Checkout</button>
+              </Link>
             </div>
           </>
         ) : (
