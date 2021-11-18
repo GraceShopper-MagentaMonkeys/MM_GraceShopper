@@ -55,10 +55,52 @@ const products = [
     name: "Reese Cooper Cargo Trousers",
     price: 750,
     description:
-      "INspired by the hardwearing and practical gear of firefighters. Green and white cotton cargo trousers. Button and zip fastening.",
+      "Inspired by the hardwearing and practical gear of firefighters. Green and white cotton cargo trousers. Button and zip fastening.",
     quantity: 10,
     imageUrl:
       "https://cache.mrporter.com/variants/images/13452677151468563/in/w1200_q60.jpg",
+    category: "style",
+  }
+  ,{
+    name: "LOEWE Patchwork Hooded Sweatshirt",
+    price: 970,
+    description:
+      "Designed by Jonathan Anderson, this Loewe Sweatshirt features a striking patchwork pattern and zip closure. Cotton jersey rib and body.",
+    quantity: 8,
+    imageUrl:
+    'https://cdn.shopify.com/s/files/1/1464/4082/products/H526Y25J13-MULTICOLOR14047.jpg?v=1625593116',
+    category: "style",
+  },
+
+  {
+    name: "Nike All-Terrain Sneakers",
+    price: 175,
+    description:
+      "Nike performance sneakers with traction sole, flyknit upper, and embroidered swoosh at sides.",
+    quantity: 8,
+    imageUrl:
+    'https://cdn.shopify.com/s/files/1/1464/4082/products/DJ3056-001-ANTHRACITE_3475.jpg?v=1619130978',
+    category: "style",
+  },
+  {
+    name: "Mykita Sunglasses",
+    price: 575,
+    description:
+      "Acetate sunglasses with tinted-lens and anti-scratch coating.",
+    quantity: 10,
+    imageUrl:
+    'https://cdn.shopify.com/s/files/1/1464/4082/products/MMRAW019-RAW-SMOKE_73875_62.jpg?v=1602101901',
+    category: "style",
+  },
+
+  {
+    name: "Vintage Pan-Am Airline Bag",
+    price: 275,
+    description:
+      "Blue airline flight bag deadstock from the 1960's. Authentic pre-owned vintage, each item may be different.",
+    imageUrl:
+      "https://i.pinimg.com/736x/29/a1/65/29a165fe0334e4c57ced21e9405b4433--vintage-airline-vintage-logos.jpg",
+    quantity: 3,
     category: "style",
   },
   {
@@ -99,6 +141,17 @@ const products = [
     imageUrl:
       "https://cache.mrporter.com/variants/images/18706561955675926/in/w1200_q60.jpg",
     quantity: 3,
+    category: "home",
+  },
+
+  {
+    name: "Brass Watering Can",
+    price: 125,
+    description:
+      "Shiny brass watering can in gold-tone with extended spout.",
+    imageUrl:
+    'https://img.ssensemedia.com/images/b_white,g_center,f_auto,q_auto:best/212152M613016_1/modern-sprout-brass-watering-can.jpg',
+    quantity: 5,
     category: "home",
   },
   {
@@ -153,6 +206,37 @@ const products = [
   },
 
   //food/drink
+  {
+    name: "SMEG Mixer",
+    price: 500,
+    description:
+      "Die-cast aluminium stand mixer in black and silver-tone. Wire whisk, flat beater, dough hook, and pouring shield included. Ten speeds with smooth-start function.",
+    imageUrl:
+      "https://img.ssensemedia.com/images/b_white,g_center,f_auto,q_auto:best/212308M611050_1/smeg-black-retro-style-stand-mixer.jpg",
+    quantity: 7,
+    category: "food-drink",
+  },
+  {
+    name: "CBD Gumdrop Gift Set",
+    price: 275,
+    description:
+      "8-boxes set of premium CBD gumdrops. Each gumdrop is infused with 20mg-organic, hydroponic, hemp-derived CBD.",
+    imageUrl:
+      "https://cdn.shopify.com/s/files/1/0848/9354/products/P-Page_UGGB_1000x1000_3f0d1cd7-1802-4a2a-a934-1d39df6bc5dc_1000x.png?v=1634766194",
+    quantity: 10,
+    category: "food-drink",
+  },
+
+  {
+    name: "Solid Gold JUUL Case",
+    price: 500,
+    description:
+      "24k Solid gold JUUL case. Does not come with vaping device. Tobacco may cause birth defects.",
+    imageUrl:
+    'https://static01.nyt.com/images/2018/11/18/fashion/07JUULSKINS/merlin_146057430_d430a621-ba59-4fc8-87b1-f3babc70abbf-superJumbo.jpg',
+    quantity: 10,
+    category: "food-drink",
+  },
   {
     name: "Teapot",
     price: 300,

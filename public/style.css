@@ -73,19 +73,21 @@ h4 {
 } */
 
 .landingMainBg {
-  /* display: flex;
-  flex-direction: column; */
   background-color: #95a7f8;
   font-family: 'Prata', serif;
  font-weight: 400;
- max-height: 750px;
+ max-height: auto;
  padding: 30px;
  padding-top: 30px;
- padding-right: 600px;
+ padding-right: 310px;
  justify-content: left;
- margin: 25px;
+ margin-right: 10px;
+ margin-left: 10px;
  border-radius: 30px;
  text-align: left;
+ flex-grow: 2;
+ font-size:xx-large;
+background-image: url('https://images.ctfassets.net/hbmwn5pbkdff/2eQYgqqatjuavpgkXkyQP5/0460df0f4dd285521ba23e10766aa392/CROPPED_BRAND_GQ_STYLE_CHINA.jpg?w=2000');
 }
 
 .homeImages {
@@ -162,16 +164,8 @@ h4 {
   font-size: 15px;
   background-color: black;
   color: white;
-  font-family: 'Playfair Display', serif;
+  font-family: inherit;
 }
-
-/* .products-container{
-  display:flex;
-  align-items: flex-start;
-  flex-direction:row;
-  flex-wrap: wrap;
-} */
-
 
 .cont {
   display: flex;
@@ -240,13 +234,10 @@ h4 {
 
  .welcomeText {
   /* font-family: 'Crimson Text', serif; */
-  font-size: xx-large;
+  font-size: x-large;
   text-align: center;
  }
 
- /* .landingPage {
-   background-image: ;
- } */
 
  .products-container {
    display: flex;
@@ -271,23 +262,9 @@ h4 {
 
  nav, .navBarHeader {
   position: sticky; top: 0;
+  z-index: 950;
 }
 
- .missionStatement {
-  margin: 10px;
-  display: flex;
-  font-family: 'Prata', serif;
- font-weight: 400;
-  text-align: center;
-  flex-direction: column;
-  align-items: center;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 20px;
-  min-height: 300px;
-
-  border-style: solid;
-}
 
 .categoriersContainer, .singleProductContainer, .cartFlexContainer, .checkoutFlexContainer  {
   display: flex;
@@ -321,9 +298,9 @@ h4 {
 
 .categoriesLink {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  margin-left: 30%;
+  /* margin-left: 30%; */
   text-align: center;
   font-family: 'Work Sans', sans-serif;
   color: black
@@ -332,10 +309,10 @@ h4 {
 }
 
 .categoryImage {
-  max-height: 500px;
-  max-width: 500px;
-  margin-left: 10px;
-  margin-right: 10px;
+  max-height: 300px;
+  min-width: 320px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   border-radius: 25px
 }
 
@@ -349,6 +326,7 @@ h4 {
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
+  height: auto;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   max-height:500px;
@@ -434,3 +412,35 @@ h4 {
   margin: 15px
 }
 
+.landingPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 10px;
+  margin-bottom: 10px
+}
+
+.categoriesLink {
+  flex-direction: column;
+}
+
+.categoriesLinkContainer {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  position: relative;
+  text-align: center;
+  color: white;
+  font-size: x-large;
+  z-index: 900
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.landingMainImage {
+  margin-right: 400px;
+}

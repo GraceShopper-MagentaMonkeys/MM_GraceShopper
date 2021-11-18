@@ -10,13 +10,13 @@ class AllUsers extends React.Component {
 
   render() {
     const { allUsersView, remove } = this.props;
-    console.log(allUsersView)
     return (
       <div>
        { allUsersView.map((user) => {
          return (
           <div className='cont' key={user.id}>
            <div className='card'>
+             {console.log(user.imageUrl)}
               <img src={user.imageUrl} className='userImage'/>
             <div className='container'>
               <p>Account Created: {user.createdAt.slice(0, 10)}</p>
