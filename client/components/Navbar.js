@@ -48,7 +48,7 @@ const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin, state }) => (
             {isAdmin ? (
               <div>
                 <div className="dropdown">
-                  <Link className="dropButton">Administrator Tools</Link>
+                  <Link className="dropButton" to=''>Administrator Tools</Link>
                   <div className="dropdownContent">
                     <Link to="/create">
                       <h4>Create New Product</h4>
