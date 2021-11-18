@@ -1,8 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { getSelectedProducts, addToCart, removeFromCart } from '../store/cart';
-import { Link } from 'react-router-dom';
-
+import React from "react";
+import { connect } from "react-redux";
+import { getSelectedProducts, addToCart, removeFromCart } from "../store/cart";
+import { Link } from "react-router-dom";
 
 class Cart extends React.Component {
   constructor() {
@@ -21,27 +20,26 @@ class Cart extends React.Component {
   handleClick(event, productId) {
     const userId = this.props.userId;
 
-    if (event.target.name === 'add') {
-      
-      const product = this.props.selectedProducts.filter(product => {
-        if (product.id === productId){
-          return product
+    if (event.target.name === "add") {
+      const product = this.props.selectedProducts.filter((product) => {
+        if (product.id === productId) {
+          return product;
         }
-        
-      })
-      
-      if (product[0].cart.quantity + 1 > product[0].quantity){
-        return window.alert('Error 418: I am a teapot, also we dont have that much');
+      });
+
+      if (product[0].cart.quantity + 1 > product[0].quantity) {
+        return window.alert(
+          "Error 418: I am a teapot, also we dont have that much"
+        );
       }
-      
+
       this.props.addToCart(productId, userId);
-    } else if (event.target.name === 'minus') {
-      this.props.removeFromCart(productId, userId, 'decrease');
-    } else if (event.target.name === 'remove') {
-      this.props.removeFromCart(productId, userId, 'remove');
+    } else if (event.target.name === "minus") {
+      this.props.removeFromCart(productId, userId, "decrease");
+    } else if (event.target.name === "remove") {
+      this.props.removeFromCart(productId, userId, "remove");
     }
   }
-  
 
   render() {
     const productRender = this.props.selectedProducts;
@@ -56,9 +54,8 @@ class Cart extends React.Component {
       acc += ele;
       return acc;
     }, 0);
-    
-    return (
 
+    return (
       <div className="cartFlexContainer">
         {this.props.isLoggedIn ? (
           <>
@@ -100,7 +97,8 @@ class Cart extends React.Component {
             <div className="totalContainer">
               <h2>Subtotal: ${total}</h2>
               <Link
-                to={{ pathname: '/checkout', params: { cartTotal: total } }}>
+                to={{ pathname: "/checkout", params: { cartTotal: total } }}
+              >
                 <button>Checkout</button>
               </Link>
             </div>
