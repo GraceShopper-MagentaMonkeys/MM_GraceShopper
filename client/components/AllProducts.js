@@ -36,7 +36,7 @@ class AllProducts extends React.Component {
               <Link to={`/allproducts/${product.id}`}>
                 <img src={product.imageUrl} className="productImage" />
                 <h2>{product.name}</h2>
-                <h2>{product.price}</h2>
+                <h2>${product.price}</h2>
               </Link>
               <div>
                 {isAdmin ? (
