@@ -76,8 +76,8 @@ h4 {
   background-color: #95a7f8;
   font-family: 'Prata', serif;
  font-weight: 400;
- max-height: auto;
  padding: 30px;
+ min-width: 50%;
  padding-top: 30px;
  padding-right: 310px;
  justify-content: left;
@@ -299,13 +299,12 @@ background-image: url('https://images.ctfassets.net/hbmwn5pbkdff/2eQYgqqatjuavpg
 .categoriesLink {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  /* margin-left: 30%; */
+  /* justify-content: c; */
+
   text-align: center;
   font-family: 'Work Sans', sans-serif;
   color: black
-  /* align-items: baseline; */
-  /* transform: scale(0.7); */
+
 }
 
 .categoryImage {
@@ -442,5 +441,5 @@ background-image: url('https://images.ctfassets.net/hbmwn5pbkdff/2eQYgqqatjuavpg
 }
 
 .landingMainImage {
-  margin-right: 400px;
+  max-width: 500px
 }
