@@ -7,7 +7,7 @@ class LandingPage extends React.Component {
     return (
       <div className="landingPage">
         <div className="landingMainBg">
-          <h1> We're a modern lifestyle brand, for the modern man. </h1>
+          <h1 className='landingMainImage'> We're a modern lifestyle brand, for the modern man. </h1>
           <h3>Luxury, just for you. </h3>
           <h4> Goop... but for men. </h4>
           <div className="homeButtonDiv">

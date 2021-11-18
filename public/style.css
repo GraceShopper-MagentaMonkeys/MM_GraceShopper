@@ -79,7 +79,7 @@ h4 {
  max-height: auto;
  padding: 30px;
  padding-top: 30px;
- padding-right: 600px;
+ padding-right: 310px;
  justify-content: left;
  margin-right: 10px;
  margin-left: 10px;
@@ -439,4 +439,8 @@ background-image: url('https://images.ctfassets.net/hbmwn5pbkdff/2eQYgqqatjuavpg
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.landingMainImage {
+  margin-right: 400px;
 }
