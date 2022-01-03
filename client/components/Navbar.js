@@ -10,7 +10,7 @@ import SingleProduct from "./SingleProduct";
 const Navbar = ({ handleClick, isLoggedIn, userId, isAdmin, state }) => (
   <div className="navBarHeader">
     <img
-      src="https://scontent-lga3-1.xx.fbcdn.net/v/t1.6435-9/61384177_2072231662906442_4883924899896229888_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=973b4a&_nc_ohc=rQyaG6tLslkAX-eh64z&_nc_ht=scontent-lga3-1.xx&oh=d826cde22379d813a987d54ea9096343&oe=61B87141"
+      src="https://cdn.yourpng.com/uploads/preview/letter-g-black-circle-logo-png-images-download-65-116183398912zad6de1my.png"
       className="logo"
     />
     <hr />
