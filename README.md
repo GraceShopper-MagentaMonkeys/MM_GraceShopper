@@ -14,3 +14,9 @@ Goop is a modern lifestyle brand, for the modern man. A luxurious e-commerce web
 
 ## Deployed Application
 https://mm-grace-shopper.herokuapp.com/home
+
+## Authors:
+ - Davide Lepri
+ - Jordan Oetting
+ - Jordan Laguio
+ - Brendan Shulman
